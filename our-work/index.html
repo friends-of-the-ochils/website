@@ -172,6 +172,41 @@
   .recent-posts a { color: #2d5a1b; text-decoration: none; }
   .recent-posts a:hover { text-decoration: underline; }
 
+  /* ── Section cards ── */
+  .section-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .section-card {
+    border: 1px solid #d4e0c8;
+    border-top: 3px solid #2d5a1b;
+    border-radius: 3px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: box-shadow 0.2s, border-top-color 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-top-color: #1a3a10;
+  }
+  .section-card h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    margin: 0 0 8px;
+  }
+  .section-card p {
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+
   /* ── Footer ── */
   footer {
     background: #c8d9b8;
@@ -289,6 +324,30 @@
 <div class="main-content-padding">
 <article class="post-2 page type-page status-publish hentry" id="post-2">
 <div class="entry">
+<p>Friends of the Ochils campaigns to protect the Ochils from developments that threaten their landscape, wildlife, and recreational value. We respond to planning consultations, participate in public inquiries, and work with other organisations to preserve these hills for future generations. Browse our work below.</p>
+
+<div class="section-cards">
+  <a class="section-card" href="/our-work/windfarms/">
+    <h2>Windfarms</h2>
+    <p>Our long-running campaign opposing inappropriate wind farm developments in and around the Ochils.</p>
+  </a>
+  <a class="section-card" href="/our-work/powerline/">
+    <h2>Beauly to Denny Power Line</h2>
+    <p>The impact of the 400KV power line construction through the western Ochils and our response to it.</p>
+  </a>
+  <a class="section-card" href="/our-work/forestry/">
+    <h2>Forestry</h2>
+    <p>Scrutinising forestry proposals to help preserve the upland character, beauty and natural capital of the Ochils.</p>
+  </a>
+  <a class="section-card" href="/our-work/other-planning-issues/">
+    <h2>Other planning issues</h2>
+    <p>Other developments we have engaged with, including Glenquey Quarry and red squirrel conservation.</p>
+  </a>
+  <a class="section-card" href="/our-work/newsletters/">
+    <h2>Newsletters</h2>
+    <p>Our newsletters and annual reviews, keeping members up to date with campaigns and events.</p>
+  </a>
+</div>
 </div>
 </article>
 <div class="clear"></div>

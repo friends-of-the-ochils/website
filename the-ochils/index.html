@@ -172,6 +172,41 @@
   .recent-posts a { color: #2d5a1b; text-decoration: none; }
   .recent-posts a:hover { text-decoration: underline; }
 
+  /* ── Section cards ── */
+  .section-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .section-card {
+    border: 1px solid #d4e0c8;
+    border-top: 3px solid #2d5a1b;
+    border-radius: 3px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: box-shadow 0.2s, border-top-color 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-top-color: #1a3a10;
+  }
+  .section-card h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    margin: 0 0 8px;
+  }
+  .section-card p {
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+
   /* ── Footer ── */
   footer {
     background: #c8d9b8;
@@ -289,6 +324,26 @@
 <div class="main-content-padding">
 <article class="post-23 page type-page status-publish hentry" id="post-23">
 <div class="entry">
+<p>The Ochils are a range of hills in central Scotland, stretching from Stirling in the west to the Firth of Tay in the east. With 60 summits over 300 metres, they offer outstanding walking, wildlife and scenery within easy reach of much of Scotland's population. Explore the links below to learn more.</p>
+
+<div class="section-cards">
+  <a class="section-card" href="/the-ochils/the-hills/">
+    <h2>The Hills</h2>
+    <p>An introduction to the Ochils — their landscape, geology, wildlife and what makes them special.</p>
+  </a>
+  <a class="section-card" href="/the-ochils/list-of-hills-and-maps/">
+    <h2>List of hills &amp; maps</h2>
+    <p>All 60 Ochils summits over 300 metres, divided into three groups, with mapping information.</p>
+  </a>
+  <a class="section-card" href="/the-ochils/books/">
+    <h2>Books about the Ochils</h2>
+    <p>Recommended reading about the Ochils, including local history, walking guides and fiction set in the hills.</p>
+  </a>
+  <a class="section-card" href="/the-ochils/useful-links/">
+    <h2>Useful links</h2>
+    <p>Further resources for things to see, do and learn about the Ochils.</p>
+  </a>
+</div>
 </div>
 </article>
 <div class="clear"></div>
