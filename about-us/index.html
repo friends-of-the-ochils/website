@@ -172,6 +172,41 @@
   .recent-posts a { color: #2d5a1b; text-decoration: none; }
   .recent-posts a:hover { text-decoration: underline; }
 
+  /* ── Section cards ── */
+  .section-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .section-card {
+    border: 1px solid #d4e0c8;
+    border-top: 3px solid #2d5a1b;
+    border-radius: 3px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: box-shadow 0.2s, border-top-color 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-top-color: #1a3a10;
+  }
+  .section-card h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    margin: 0 0 8px;
+  }
+  .section-card p {
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+
   /* ── Footer ── */
   footer {
     background: #c8d9b8;
@@ -226,7 +261,10 @@
 </a>
 <div class="social-links">
 <a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
-<img alt="Facebook" src="/wp-content/themes/u-design/styles/common-images/facebook-64x64.png"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+  <rect width="28" height="28" rx="5" fill="#1877F2"/>
+  <path d="M19 14h-3v-2c0-.8.4-1 1-1h2V8h-3c-2.8 0-4 1.8-4 4v2h-2v3h2v8h4v-8h2.6L19 14z" fill="#fff"/>
+</svg>
 </a>
 </div>
 </header>
@@ -289,54 +327,28 @@
 <div class="main-content-padding">
 <article class="post-908 page type-page status-publish hentry" id="post-908">
 <div class="entry">
-<div class="elementor elementor-908" data-elementor-id="908" data-elementor-type="wp-page">
-<div class="elementor-element elementor-element-4d868780 e-flex e-con-boxed e-con e-parent" data-element_type="container" data-id="4d868780">
-<div class="e-con-inner">
-<div class="elementor-element elementor-element-6caa7fff elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="6caa7fff" data-widget_type="text-editor.default">
-<div class="elementor-widget-container">
-<p>Friends of the Ochils is an independent Scottish charity with the following aims and objectives:</p>
-<ul class="wp-block-list">
-<li style="list-style-type: none;">
-<ul class="wp-block-list">
-<li style="list-style-type: none;">
-<ul class="wp-block-list"></ul>
-</li>
-</ul>
-<ul class="wp-block-list">
-<li>To promote and conserve the landscape, natural beauty and wildlife of the Ochils, and to protect the historical and social character of the surrounding communities.</li>
-</ul>
-</li>
-</ul>
-<ul class="wp-block-list">
-<li style="list-style-type: none;">
-<ul class="wp-block-list">
-<li>To encourage consistent implementation of good planning policies appropriate to the other objects of the Association.</li>
-</ul>
-</li>
-</ul>
-<ul class="wp-block-list">
-<li style="list-style-type: none;">
-<ul class="wp-block-list">
-<li>To support responsible and well behaved public access to the Ochils consistent with the Scottish Outdoor Access Code</li>
-</ul>
-</li>
-</ul>
+<p>Friends of the Ochils (FotO) is an independent Scottish charity (SC022034) committed to protecting the Ochils hills and their surrounding communities. Our aims are to:</p>
 <ul>
-<li style="list-style-type: none;">
-<ul class="wp-block-list">
-<li>To promote appropriate study of and research into relevant fields of interest pertaining to the Ochils and its local communities, and to promote dissemination of the results of such study and research.</li>
+  <li>Promote and conserve the landscape, natural beauty and wildlife of the Ochils, and protect the historical and social character of the surrounding communities.</li>
+  <li>Encourage consistent implementation of good planning policies appropriate to the Ochils.</li>
+  <li>Support responsible public access to the Ochils consistent with the Scottish Outdoor Access Code.</li>
+  <li>Promote appropriate study of and research into the Ochils and its local communities.</li>
 </ul>
-</li>
-</ul>
-<p>Why not become a member of Friends of the Ochils? We are an independent voluntary association based on the support of those who share our aims and objectives. <span style="font-size: 13px; text-align: inherit;">Membership forms and information about annual fees are available here: </span><a href="/join-us/" style="font-size: 13px; text-align: inherit;">Join us – FotO</a></p>
-<p>A Scottish Charity: SC022034</p>
-<p></p>
-<p><!-- /wp:list --></p>
-<p><!-- /wp:list-item --></p>
-<p><!-- /wp:list --></p> </div>
-</div>
-</div>
-</div>
+<p>We are an independent voluntary association run by a committee of volunteers. Why not <a href="/join-us/">become a member</a> and help us protect these wonderful hills?</p>
+
+<div class="section-cards">
+  <a class="section-card" href="/about-us/our-mission/">
+    <h2>Our Mission</h2>
+    <p>The aims and values that guide everything Friends of the Ochils does.</p>
+  </a>
+  <a class="section-card" href="/about-us/the-origin-of-foto/">
+    <h2>The Origin of FotO</h2>
+    <p>How and why Friends of the Ochils was founded, and the history of the organisation.</p>
+  </a>
+  <a class="section-card" href="/about-us/meet-the-committee/">
+    <h2>Meet the Committee</h2>
+    <p>The volunteers who run FotO — find out who we are and what drives our commitment to the Ochils.</p>
+  </a>
 </div>
 </div>
 </article>
