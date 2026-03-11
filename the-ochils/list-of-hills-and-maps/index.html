@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>List of hills &amp; maps – FotO</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid #d4e0c8;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .site-header .logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+  .site-header .social-links { display: flex; gap: 12px; align-items: center; }
+  .site-header .social-links a img { width: 28px; height: 28px; }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    background: #2d5a1b;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 1;
+  }
+
+  /* ── Navigation ── */
+  nav.main-nav {
+    background: #fff;
+    border-bottom: 2px solid #d4e0c8;
+    position: relative;
+  }
+  nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nav.main-nav li { position: relative; }
+  nav.main-nav a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #2d5a1b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active { color: #1a3a10; text-decoration: underline; }
+
+  /* ── Dropdowns ── */
+  nav.main-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4e0c8;
+    border-top: 2px solid #2d5a1b;
+    min-width: 200px;
+    z-index: 100;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  nav.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    border-top: 1px solid #d4e0c8;
+  }
+  nav.main-nav li:hover > ul { display: flex; }
+  nav.main-nav ul ul a { padding: 9px 14px; font-size: 0.88rem; border-bottom: 1px solid #eef5e8; }
+  nav.main-nav ul ul a:hover { background: #f5f9f2; }
+
+  /* ── Page layout ── */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+  .breadcrumb {
+    font-size: 0.82rem;
+    font-family: Arial, sans-serif;
+    color: #888;
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: #2d5a1b; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: #555; }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    border-bottom: 1px solid #d4e0c8;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Content styles ── */
+  .page-content h2 { font-size: 1.35rem; font-weight: normal; color: #2d5a1b; margin: 28px 0 12px; }
+  .page-content h3 { font-size: 1.1rem; color: #2d5a1b; margin: 20px 0 8px; }
+  .page-content p  { margin-bottom: 16px; }
+  .page-content ul, .page-content ol { margin: 0 0 16px 24px; }
+  .page-content li { margin-bottom: 6px; }
+  .page-content a  { color: #2d5a1b; }
+  .page-content a:hover { color: #1a3a10; }
+  .page-content img { max-width: 100%; height: auto; border-radius: 3px; }
+  .page-content table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 0.93rem; }
+  .page-content th { background: #2d5a1b; color: #fff; padding: 9px 12px; text-align: left; }
+  .page-content td { padding: 8px 12px; border-bottom: 1px solid #e0e8d8; }
+  .page-content tr:nth-child(even) td { background: #f5f9f2; }
+  .page-content blockquote { border-left: 4px solid #2d5a1b; margin: 16px 0; padding: 12px 16px; background: #f5f9f2; font-style: italic; }
+
+  /* ── News list ── */
+  .news-list { list-style: none; margin: 0; padding: 0; }
+  .news-item { border-bottom: 1px solid #d4e0c8; padding: 20px 0; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .news-item h2 a { color: #2d5a1b; text-decoration: none; }
+  .news-item h2 a:hover { text-decoration: underline; }
+  .news-meta { font-size: 0.82rem; font-family: Arial, sans-serif; color: #888; margin-bottom: 10px; }
+
+  /* ── Gallery ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .gallery-grid a { display: block; overflow: hidden; border-radius: 3px; border: 1px solid #d4e0c8; }
+  .gallery-grid img { width: 100%; height: 150px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .gallery-grid a:hover img { opacity: 0.85; }
+
+  /* ── Homepage hero ── */
+  .hero-image { width: 100%; max-height: 380px; object-fit: cover; display: block; }
+  .welcome-box {
+    background: #f5f9f2;
+    border-left: 4px solid #2d5a1b;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 1rem;
+  }
+  .welcome-box h2 { font-size: 1.4rem; color: #2d5a1b; margin-bottom: 12px; font-weight: normal; }
+  .recent-posts { margin-top: 32px; }
+  .recent-posts h2 { font-size: 1.2rem; color: #2d5a1b; margin-bottom: 16px; font-weight: normal; border-bottom: 1px solid #d4e0c8; padding-bottom: 8px; }
+  .recent-posts ul { list-style: none; }
+  .recent-posts li { padding: 8px 0; border-bottom: 1px solid #eef5e8; }
+  .recent-posts li::before { content: "›› "; color: #2d5a1b; }
+  .recent-posts a { color: #2d5a1b; text-decoration: none; }
+  .recent-posts a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: #c8d9b8;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+  }
+  footer a { color: #2d5a1b; }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hamburger { display: block; }
+    nav.main-nav > ul {
+      display: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      border-top: 1px solid #d4e0c8;
+    }
+    nav.main-nav > ul.open { display: flex; }
+    nav.main-nav ul ul {
+      position: static;
+      border: none;
+      border-top: none;
+      box-shadow: none;
+      background: #f5f9f2;
+      padding-left: 12px;
+    }
+    nav.main-nav ul ul ul { padding-left: 20px; }
+    nav.main-nav li:hover > ul { display: none; }
+    nav.main-nav li.open > ul { display: flex; }
+    nav.main-nav a { padding: 10px 16px; border-bottom: 1px solid #e8f0e0; }
+    .has-children > a::after { content: " ▾"; font-size: 0.75rem; }
+    .has-children.open > a::after { content: " ▴"; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    .page-wrapper { padding: 24px 16px 40px; }
+    h1 { font-size: 1.6rem; }
+  }
+  @media (max-width: 480px) {
+    .site-header { padding: 12px 16px; }
+    .site-header .logo img { height: 55px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="/">
+<img alt="Friends of the Ochils" src="/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+</a>
+<div class="social-links">
+<a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
+<img alt="Facebook" src="/wp-content/themes/u-design/styles/common-images/facebook-64x64.png"/>
+</a>
+</div>
+</header>
+<nav aria-label="Main navigation" class="main-nav">
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger">☰</button>
+<ul id="main-menu-list">
+<li><a href="/">Home</a></li>
+<li class="has-children">
+<a href="/our-work/">Our work</a>
+<ul>
+<li><a href="/our-work/forestry/">Forestry</a></li>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/">Other planning issues</a>
+<ul>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/glenquey-quarry/">Glenquey Quarry</a>
+<ul>
+<li><a href="/our-work/other-planning-issues/glenquey-quarry/previous-documents/">Previous documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/our-work/windfarms/">Windfarms</a></li>
+<li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
+<li class="has-children">
+<a href="/our-work/newsletters/">Newsletters</a>
+<ul>
+<li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/latest-news/">Latest news</a></li>
+<li class="has-children">
+<a href="/about-us/">About us</a>
+<ul>
+<li><a href="/about-us/the-origin-of-foto/">The Origin of FOTO</a></li>
+<li><a href="/about-us/our-mission/">Our Mission</a></li>
+<li><a href="/about-us/meet-the-committee/">Meet the Committee</a></li>
+</ul>
+</li>
+<li class="has-children">
+<a href="/the-ochils/">About the hills</a>
+<ul>
+<li><a href="/the-ochils/the-hills/">The Hills</a></li>
+<li><a class="active" href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
+<li><a href="/the-ochils/books/">Books about the Ochils</a></li>
+<li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul>
+</li>
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/join-us/">Join us</a></li>
+<li><a href="/contact-us/">Contact us</a></li>
+</ul>
+</nav>
+<div class="page-wrapper">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a> → <a href="/the-ochils/">The Ochils</a> → <span>List of hills &amp; maps – FotO</span></nav><h1>List of hills &amp; maps</h1>
+<div class="page-content">
+<main class="grid_24" id="main-content" role="main">
+<div class="main-content-padding">
+<article class="post-146 page type-page status-publish hentry" id="post-146">
+<div class="entry">
+<p>There are 60 hills in the Ochils over 300 metres high (984 feet) with a drop all round of at least 30 metres. The hills are divided into three groups: west of the A832 through Glen Eagles and Glen Devon (containing the highest summits), east of the B934 from Dunning to Yetts o’Muckhart, and the northern group wedged centrally between these two roads. Click on the links below to find out more:</p>
+<h4 class="slide_toggle"><a href="#">Western Ochils</a></h4><div class="slide_toggle_content" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0" width="549">
+<colgroup>
+<col width="64"/>
+<col width="139"/>
+<col span="2" width="64"/>
+<col width="154"/>
+<col width="64"/> </colgroup>
+<tbody>
+<tr>
+<td height="20" width="64">Metres</td>
+<td width="139">Name</td>
+<td width="64">Map</td>
+<td width="64">ExMap</td>
+<td width="154">GridRef</td>
+<td width="64">Drop</td>
+</tr>
+<tr>
+<td height="20">721</td>
+<td>Ben Cleuch</td>
+<td>58</td>
+<td>366</td>
+<td>NN902006</td>
+<td>595</td>
+</tr>
+<tr>
+<td height="20">670</td>
+<td>Andrew Gannel Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN918006</td>
+<td>49</td>
+</tr>
+<tr>
+<td height="20">648</td>
+<td>King’s Seat Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NS933999</td>
+<td>c 135</td>
+</tr>
+<tr>
+<td height="20">645</td>
+<td>Tarmangie Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN942014</td>
+<td>77</td>
+</tr>
+<tr>
+<td height="20">643</td>
+<td>Whitewisp Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN955013</td>
+<td>32</td>
+</tr>
+<tr>
+<td height="20">631</td>
+<td>Blairdenon Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN865018</td>
+<td>c 94</td>
+</tr>
+<tr>
+<td height="20">622</td>
+<td>Ben Ever</td>
+<td>58</td>
+<td>366</td>
+<td>NN893001</td>
+<td>38</td>
+</tr>
+<tr>
+<td height="20">610</td>
+<td>Innerdownie</td>
+<td>58</td>
+<td>366</td>
+<td>NN966031</td>
+<td>52</td>
+</tr>
+<tr>
+<td height="20">606</td>
+<td>Cairnmorris Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN933016</td>
+<td>38</td>
+</tr>
+<tr>
+<td height="20">583</td>
+<td>Craighorn</td>
+<td>58</td>
+<td>366</td>
+<td>NN884002</td>
+<td>c 31</td>
+</tr>
+<tr>
+<td height="20">583</td>
+<td>Burnfoot Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN904024</td>
+<td>36</td>
+</tr>
+<tr>
+<td height="20">565</td>
+<td>Bengengie Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN869001</td>
+<td>c 47</td>
+</tr>
+<tr>
+<td height="20">558</td>
+<td>Colsnaur Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NS861993</td>
+<td>c 31</td>
+</tr>
+<tr>
+<td height="20">542</td>
+<td>Core Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN885046</td>
+<td>c 119</td>
+</tr>
+<tr>
+<td height="20">542</td>
+<td>Mid Cairn</td>
+<td>58</td>
+<td>366</td>
+<td>NS872987</td>
+<td>c 36</td>
+</tr>
+<tr>
+<td height="20">516</td>
+<td>Ben Shee</td>
+<td>58</td>
+<td>366</td>
+<td>NN951039</td>
+<td>c 90</td>
+</tr>
+<tr>
+<td height="20">503</td>
+<td>Wether Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN923059</td>
+<td>117</td>
+</tr>
+<tr>
+<td height="20">500</td>
+<td>Bald Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN926035</td>
+<td>66</td>
+</tr>
+<tr>
+<td height="20">493</td>
+<td>Craigentaggert Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN906055</td>
+<td>70</td>
+</tr>
+<tr>
+<td height="20">481</td>
+<td>Glentye Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN846025</td>
+<td>30</td>
+</tr>
+<tr>
+<td height="20">468</td>
+<td>Commonedge Hill</td>
+<td>58</td>
+<td>366, 369</td>
+<td>NN980015</td>
+<td>c 135</td>
+</tr>
+<tr>
+<td height="20">449</td>
+<td>The Nebit</td>
+<td>58</td>
+<td>366</td>
+<td>NS888986</td>
+<td>85</td>
+</tr>
+<tr>
+<td height="20">442</td>
+<td>Hillfoot Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN969005</td>
+<td>53</td>
+</tr>
+<tr>
+<td height="20">419</td>
+<td>Brown Hill</td>
+<td>57</td>
+<td>366</td>
+<td>NN834002</td>
+<td>35</td>
+</tr>
+<tr>
+<td height="20">418</td>
+<td>Dumyat</td>
+<td>57</td>
+<td>366</td>
+<td>NS835976</td>
+<td>190</td>
+</tr>
+<tr>
+<td height="20">387</td>
+<td>Myreton Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NS859981</td>
+<td>49</td>
+</tr>
+<tr>
+<td height="20">357</td>
+<td>Black Hill</td>
+<td>58</td>
+<td>366</td>
+<td>NN966044</td>
+<td>c 36</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="padding-left: 90px;"><a href="/wp-content/uploads/2017/07/western-ochils-hills.pdf">Western Ochil hills PDF</a></h4>
+<h4 class="slide_toggle"><a href="#">Eastern Ochils</a></h4><div class="slide_toggle_content" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0" width="549">
+<colgroup>
+<col width="64"/>
+<col width="139"/>
+<col span="2" width="64"/>
+<col width="154"/>
+<col width="64"/> </colgroup>
+<tbody>
+<tr>
+<td height="20" width="64">Metres</td>
+<td width="139">Name</td>
+<td width="64">Map</td>
+<td width="64">ExMap</td>
+<td width="154">GridRef</td>
+<td width="64">Drop</td>
+</tr>
+<tr>
+<td height="20">497</td>
+<td>Innerdouny Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO032073</td>
+<td>228</td>
+</tr>
+<tr>
+<td height="20">479</td>
+<td>Mellock Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO023060</td>
+<td>c 86</td>
+</tr>
+<tr>
+<td height="20">456</td>
+<td>Lendrick Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO019036</td>
+<td>222</td>
+</tr>
+<tr>
+<td height="20">408</td>
+<td>Carmodle</td>
+<td>58</td>
+<td>369</td>
+<td>NO029053</td>
+<td>c 40</td>
+</tr>
+<tr>
+<td height="20">408</td>
+<td>Cock Law</td>
+<td>58</td>
+<td>369</td>
+<td>NO032102</td>
+<td>c 95</td>
+</tr>
+<tr>
+<td height="20">367</td>
+<td>Knock Wood</td>
+<td>58</td>
+<td>369</td>
+<td>NO076076</td>
+<td>66</td>
+</tr>
+<tr>
+<td height="20">366</td>
+<td>Dochrie Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO082082</td>
+<td>c 39</td>
+</tr>
+<tr>
+<td height="20">346</td>
+<td>Cloon</td>
+<td>58</td>
+<td>369</td>
+<td>NO037044</td>
+<td>c 44</td>
+</tr>
+<tr>
+<td height="20">332</td>
+<td>Tillyrie Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO105079</td>
+<td>c 30</td>
+</tr>
+<tr>
+<td height="20">325</td>
+<td>Braughty Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO036039</td>
+<td>c 58</td>
+</tr>
+<tr>
+<td height="20">313</td>
+<td>Culteuchar Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO096152</td>
+<td>129</td>
+</tr>
+<tr>
+<td height="20">307</td>
+<td>Whitehill Head</td>
+<td>58</td>
+<td>369</td>
+<td>NO077101</td>
+<td>c 36</td>
+</tr>
+<tr>
+<td height="20">307</td>
+<td>Arlick Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO093105</td>
+<td>56</td>
+</tr>
+<tr>
+<td height="20">300</td>
+<td>Montalt Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO054129</td>
+<td>c 43</td>
+</tr>
+<tr>
+<td height="20">300</td>
+<td>Glenearn Hill</td>
+<td>58</td>
+<td>369</td>
+<td>NO105153</td>
+<td>c 43</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="padding-left: 90px;"><a href="/wp-content/uploads/2017/07/eastern-ochils-hills.pdf">Eastern Ochil hills PDF</a></h4>
+<h4 class="slide_toggle"><a href="#">Northern Ochils</a></h4><div class="slide_toggle_content" style="display: none;">  (Northern Ochil hills PDF)
+<table border="0" cellpadding="0" cellspacing="0" width="549">
+<colgroup>
+<col width="64"/>
+<col width="139"/>
+<col span="2" width="64"/>
+<col width="154"/>
+<col width="64"/> </colgroup>
+<tbody>
+<tr>
+<td height="21" width="64">Metres</td>
+<td width="139">Name</td>
+<td width="64">Map</td>
+<td width="64">ExMap</td>
+<td width="154">GridRef</td>
+<td width="64">Drop</td>
+</tr>
+<tr>
+<td height="21" width="64">485</td>
+<td width="139">Steele’s Knowe</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NN969080</td>
+<td width="64">177</td>
+</tr>
+<tr>
+<td height="21" width="64">483</td>
+<td width="139">Sim’s Hill</td>
+<td width="64">58</td>
+<td width="64">366, 369</td>
+<td width="154">NN999075</td>
+<td width="64">c 50</td>
+</tr>
+<tr>
+<td height="21" width="64">483</td>
+<td width="139">John’s Hill</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NO001081</td>
+<td width="64">c 72</td>
+</tr>
+<tr>
+<td height="21" width="64">475</td>
+<td width="139">Corb Law</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NO003091</td>
+<td width="64">c 116</td>
+</tr>
+<tr>
+<td height="21" width="64">474</td>
+<td width="139">Long Craig</td>
+<td width="64">58</td>
+<td width="64">366, 369</td>
+<td width="154">NN986069</td>
+<td width="64">31</td>
+</tr>
+<tr>
+<td height="21" width="64">473</td>
+<td width="139">East Craigs</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NN947069</td>
+<td width="64">30</td>
+</tr>
+<tr>
+<td height="21" width="64">456</td>
+<td width="139">Ben Thrush</td>
+<td width="64">58</td>
+<td width="64">366, 369</td>
+<td width="154">NN986058</td>
+<td width="64">c 47</td>
+</tr>
+<tr>
+<td height="21" width="64">443</td>
+<td width="139">Black Creich Hill</td>
+<td width="64">58</td>
+<td width="64">366, 369</td>
+<td width="154">NN997065</td>
+<td width="64">c 56</td>
+</tr>
+<tr>
+<td height="21" width="64">436</td>
+<td width="139">White Creich Hill</td>
+<td width="64">58</td>
+<td width="64">366, 369</td>
+<td width="154">NN994060</td>
+<td width="64">c 30</td>
+</tr>
+<tr>
+<td height="21" width="64">422</td>
+<td width="139">Lamb Hill</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NO008076</td>
+<td width="64">c 30</td>
+</tr>
+<tr>
+<td height="21" width="64">412</td>
+<td width="139">Beld Hill</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NN987114</td>
+<td width="64">c 63</td>
+</tr>
+<tr>
+<td height="21" width="64">410</td>
+<td width="139">Craig Rossie</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NN984121</td>
+<td width="64">c 32</td>
+</tr>
+<tr>
+<td height="21" width="64">405</td>
+<td width="139">Burnt Hill</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NO002061</td>
+<td width="64">c 32</td>
+</tr>
+<tr>
+<td height="21" width="64">404</td>
+<td width="139">The Law</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NN955057</td>
+<td width="64">33</td>
+</tr>
+<tr>
+<td height="21" width="64">361</td>
+<td width="139">Down Hill</td>
+<td width="64">58</td>
+<td width="64">369</td>
+<td width="154">NO000036</td>
+<td width="64">c 112</td>
+</tr>
+<tr>
+<td height="20">336</td>
+<td>Black Maller</td>
+<td>58</td>
+<td>366</td>
+<td>NN957096</td>
+<td>c 32</td>
+</tr>
+<tr>
+<td height="20">324</td>
+<td>Rossie Law</td>
+<td>58</td>
+<td>369</td>
+<td>NN997123</td>
+<td>c 47</td>
+</tr>
+<tr>
+<td height="20">306</td>
+<td>Coul Hill</td>
+<td>58</td>
+<td>368</td>
+<td>NN974104</td>
+<td>c 92</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="padding-left: 90px;"><a href="/wp-content/uploads/2017/07/northern-ochils-hills.pdf">Northern Ochil hills PDF</a></h4>
+<p>There are also three other hills over 600m with a drop of 15-20 metres:</p>
+<h4 class="slide_toggle"><a href="#">Hills over 600m</a></h4><div class="slide_toggle_content" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0" width="549">
+<colgroup>
+<col width="64"/>
+<col width="139"/>
+<col span="2" width="64"/>
+<col width="154"/>
+<col width="64"/> </colgroup>
+<tbody>
+<tr>
+<td height="21" width="64">Metres</td>
+<td width="139">Name</td>
+<td width="64">Map</td>
+<td width="64">ExMap</td>
+<td width="154">GridRef</td>
+<td width="64">Drop</td>
+</tr>
+<tr>
+<td height="21" width="64">638</td>
+<td width="139">The Law</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NS910996</td>
+<td width="64">20</td>
+</tr>
+<tr>
+<td height="21" width="64">601</td>
+<td width="139">Skythorn Hill</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NN926013</td>
+<td width="64">20</td>
+</tr>
+<tr>
+<td height="21" width="64">679</td>
+<td width="139">Ben Buck</td>
+<td width="64">58</td>
+<td width="64">366</td>
+<td width="154">NN896014</td>
+<td width="64">16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="padding-left: 90px;"><a href="/wp-content/uploads/2017/07/ochils-hills-over-600m.pdf">Ochil hills over 600m PDF</a></h4>
+<p>Stay safe in the Ochils and always take a map and compass. The Ordnance Survey website has several maps of the area available to buy online:</p>
+<ul>
+<li><a href="http://www.shop.ordnancesurveyleisure.co.uk/products/paper-maps/paper-maps-ordnance-survey-great-britain/paper-maps-ordnance-survey-great-britain-os-landranger-map/stirling-and-the-trossachs/pid-9780319231562" rel="noopener" target="_blank" title="OS Map 57">OS Landranger Map: Stirling &amp; The Trossachs (Sheet 57)</a></li>
+<li><a href="http://www.shop.ordnancesurveyleisure.co.uk/products/paper-maps/paper-maps-ordnance-survey-great-britain/paper-maps-ordnance-survey-great-britain-os-landranger-map/perth-and-alloa/pid-9780319229972" rel="noopener" target="_blank" title="OS Map 58">OS Landranger Map: Perth &amp; Alloa (Sheet 58)</a></li>
+<li><a href="http://www.shop.ordnancesurveyleisure.co.uk/products/tourist-areas/loch-lomond-and-trossachs-national-park/stirling-and-ochil-hills-west/pid-9780319465943" rel="noopener" target="_blank" title="Map 366">OS Explorer Map: Loch Lomond and Trossachs National Park Stirling &amp; Ochils Hills West (Sheet 366)</a></li>
+<li><a href="http://www.shop.ordnancesurveyleisure.co.uk/products/paper-maps/paper-maps-ordnance-survey-great-britain/paper-maps-ordnance-survey-great-britain-os-explorer-map/perth-and-kinross/pid-9780319239056" rel="noopener" target="_blank" title="OS Map 369">OS Explorer Map: Perth &amp; Kinross (Sheet 369)</a></li>
+</ul>
+<p>The Mountaineering Council of Scotland provides excellent advice on <a href="http://www.mcofs.org.uk/mountain-safety.asp" rel="noopener" target="_blank" title="McoS">‘Safety and Skills’</a> when out walking.</p>
+</div>
+</article>
+<div class="clear"></div>
+</div><!-- end main-content-padding -->
+</main>
+</div>
+</div>
+<footer>
+<p>Friends of the Ochils  |  Scottish Charity: SC022034  | 
+  <a href="/contact-us/">Contact us</a></p>
+</footer>
+<script>
+(function() {
+  var btn  = document.querySelector('.hamburger');
+  var menu = document.getElementById('main-menu-list');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  // Mobile sub-menu toggles
+  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        var li = this.parentElement;
+        li.classList.toggle('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

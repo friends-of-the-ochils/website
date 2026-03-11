@@ -1,0 +1,20 @@
+i.udesign-shortcodes-icon {
+    background-image: url('https://www.friendsoftheochils.org.uk/wp-content/plugins/u-design-core/includes/shortcodes/tinymce/udesign-shortcodes-button.png');
+}
+body .mce-window .mce-container-body.mce-abs-layout {
+    overflow-y: hidden;
+}
+
+/* fix for combobox and colorbox colorpicker button */
+.mce-window .mce-u-design-shortcode-combobox .mce-btn,
+.mce-window .mce-u-design-shortcode-colorbox .mce-btn {
+    border-width: 1px 1px 1px 0;
+    border-left: 0;
+    border-radius: 0;
+}
+.mce-window .mce-u-design-shortcode-combobox .mce-btn button,
+.mce-window .mce-u-design-shortcode-colorbox .mce-btn button {
+    font-size: 13px;
+}
+
+

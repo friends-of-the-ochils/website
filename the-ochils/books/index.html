@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Books about the Ochils – FotO</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid #d4e0c8;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .site-header .logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+  .site-header .social-links { display: flex; gap: 12px; align-items: center; }
+  .site-header .social-links a img { width: 28px; height: 28px; }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    background: #2d5a1b;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 1;
+  }
+
+  /* ── Navigation ── */
+  nav.main-nav {
+    background: #fff;
+    border-bottom: 2px solid #d4e0c8;
+    position: relative;
+  }
+  nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nav.main-nav li { position: relative; }
+  nav.main-nav a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #2d5a1b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active { color: #1a3a10; text-decoration: underline; }
+
+  /* ── Dropdowns ── */
+  nav.main-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4e0c8;
+    border-top: 2px solid #2d5a1b;
+    min-width: 200px;
+    z-index: 100;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  nav.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    border-top: 1px solid #d4e0c8;
+  }
+  nav.main-nav li:hover > ul { display: flex; }
+  nav.main-nav ul ul a { padding: 9px 14px; font-size: 0.88rem; border-bottom: 1px solid #eef5e8; }
+  nav.main-nav ul ul a:hover { background: #f5f9f2; }
+
+  /* ── Page layout ── */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+  .breadcrumb {
+    font-size: 0.82rem;
+    font-family: Arial, sans-serif;
+    color: #888;
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: #2d5a1b; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: #555; }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    border-bottom: 1px solid #d4e0c8;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Content styles ── */
+  .page-content h2 { font-size: 1.35rem; font-weight: normal; color: #2d5a1b; margin: 28px 0 12px; }
+  .page-content h3 { font-size: 1.1rem; color: #2d5a1b; margin: 20px 0 8px; }
+  .page-content p  { margin-bottom: 16px; }
+  .page-content ul, .page-content ol { margin: 0 0 16px 24px; }
+  .page-content li { margin-bottom: 6px; }
+  .page-content a  { color: #2d5a1b; }
+  .page-content a:hover { color: #1a3a10; }
+  .page-content img { max-width: 100%; height: auto; border-radius: 3px; }
+  .page-content table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 0.93rem; }
+  .page-content th { background: #2d5a1b; color: #fff; padding: 9px 12px; text-align: left; }
+  .page-content td { padding: 8px 12px; border-bottom: 1px solid #e0e8d8; }
+  .page-content tr:nth-child(even) td { background: #f5f9f2; }
+  .page-content blockquote { border-left: 4px solid #2d5a1b; margin: 16px 0; padding: 12px 16px; background: #f5f9f2; font-style: italic; }
+
+  /* ── News list ── */
+  .news-list { list-style: none; margin: 0; padding: 0; }
+  .news-item { border-bottom: 1px solid #d4e0c8; padding: 20px 0; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .news-item h2 a { color: #2d5a1b; text-decoration: none; }
+  .news-item h2 a:hover { text-decoration: underline; }
+  .news-meta { font-size: 0.82rem; font-family: Arial, sans-serif; color: #888; margin-bottom: 10px; }
+
+  /* ── Gallery ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .gallery-grid a { display: block; overflow: hidden; border-radius: 3px; border: 1px solid #d4e0c8; }
+  .gallery-grid img { width: 100%; height: 150px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .gallery-grid a:hover img { opacity: 0.85; }
+
+  /* ── Homepage hero ── */
+  .hero-image { width: 100%; max-height: 380px; object-fit: cover; display: block; }
+  .welcome-box {
+    background: #f5f9f2;
+    border-left: 4px solid #2d5a1b;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 1rem;
+  }
+  .welcome-box h2 { font-size: 1.4rem; color: #2d5a1b; margin-bottom: 12px; font-weight: normal; }
+  .recent-posts { margin-top: 32px; }
+  .recent-posts h2 { font-size: 1.2rem; color: #2d5a1b; margin-bottom: 16px; font-weight: normal; border-bottom: 1px solid #d4e0c8; padding-bottom: 8px; }
+  .recent-posts ul { list-style: none; }
+  .recent-posts li { padding: 8px 0; border-bottom: 1px solid #eef5e8; }
+  .recent-posts li::before { content: "›› "; color: #2d5a1b; }
+  .recent-posts a { color: #2d5a1b; text-decoration: none; }
+  .recent-posts a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: #c8d9b8;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+  }
+  footer a { color: #2d5a1b; }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hamburger { display: block; }
+    nav.main-nav > ul {
+      display: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      border-top: 1px solid #d4e0c8;
+    }
+    nav.main-nav > ul.open { display: flex; }
+    nav.main-nav ul ul {
+      position: static;
+      border: none;
+      border-top: none;
+      box-shadow: none;
+      background: #f5f9f2;
+      padding-left: 12px;
+    }
+    nav.main-nav ul ul ul { padding-left: 20px; }
+    nav.main-nav li:hover > ul { display: none; }
+    nav.main-nav li.open > ul { display: flex; }
+    nav.main-nav a { padding: 10px 16px; border-bottom: 1px solid #e8f0e0; }
+    .has-children > a::after { content: " ▾"; font-size: 0.75rem; }
+    .has-children.open > a::after { content: " ▴"; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    .page-wrapper { padding: 24px 16px 40px; }
+    h1 { font-size: 1.6rem; }
+  }
+  @media (max-width: 480px) {
+    .site-header { padding: 12px 16px; }
+    .site-header .logo img { height: 55px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="/">
+<img alt="Friends of the Ochils" src="/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+</a>
+<div class="social-links">
+<a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
+<img alt="Facebook" src="/wp-content/themes/u-design/styles/common-images/facebook-64x64.png"/>
+</a>
+</div>
+</header>
+<nav aria-label="Main navigation" class="main-nav">
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger">☰</button>
+<ul id="main-menu-list">
+<li><a href="/">Home</a></li>
+<li class="has-children">
+<a href="/our-work/">Our work</a>
+<ul>
+<li><a href="/our-work/forestry/">Forestry</a></li>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/">Other planning issues</a>
+<ul>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/glenquey-quarry/">Glenquey Quarry</a>
+<ul>
+<li><a href="/our-work/other-planning-issues/glenquey-quarry/previous-documents/">Previous documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/our-work/windfarms/">Windfarms</a></li>
+<li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
+<li class="has-children">
+<a href="/our-work/newsletters/">Newsletters</a>
+<ul>
+<li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/latest-news/">Latest news</a></li>
+<li class="has-children">
+<a href="/about-us/">About us</a>
+<ul>
+<li><a href="/about-us/the-origin-of-foto/">The Origin of FOTO</a></li>
+<li><a href="/about-us/our-mission/">Our Mission</a></li>
+<li><a href="/about-us/meet-the-committee/">Meet the Committee</a></li>
+</ul>
+</li>
+<li class="has-children">
+<a href="/the-ochils/">About the hills</a>
+<ul>
+<li><a href="/the-ochils/the-hills/">The Hills</a></li>
+<li><a href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
+<li><a class="active" href="/the-ochils/books/">Books about the Ochils</a></li>
+<li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul>
+</li>
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/join-us/">Join us</a></li>
+<li><a href="/contact-us/">Contact us</a></li>
+</ul>
+</nav>
+<div class="page-wrapper">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a> → <a href="/the-ochils/">The Ochils</a> → <span>Books about the Ochils – FotO</span></nav><h1>Books about the Ochils</h1>
+<div class="page-content">
+<main class="grid_24" id="main-content" role="main">
+<div class="main-content-padding">
+<article class="post-157 page type-page status-publish hentry" id="post-157">
+<div class="entry">
+<div class="wp-block-image"><figure class="alignright is-resized"><img alt="" class="wp-image-1002" decoding="async" height="205" src="/wp-content/uploads/2019/11/daymountainmoved.jpg" width="136"/></figure></div>
+<p><em><strong>The Day the Mountain Moved</strong></em><br/><em>Rennie McOwan</em> <em>(Honorary President of the Friends of the Ochils)</em><br/><em>Rucksack readers</em></p>
+<p>Book 3 of Rennie’s Dumyat quartet is out now . <em>The Day the MountainMoved</em> features the heroes of <em>Light On Dumya</em>t and <em>The White Stag Adventure</em> –  The Clan – Gavin, Clare , Michael and Mot.  The book is stocked by Waterstones -Stirling ,  Amazon and all good bookshops and of course by <a href="http://www.rowantreepublishing.co.uk/" rel="noreferrer noopener" target="_blank">www.rowantreepublishing.co.uk</a></p>
+<p><em><img alt="Light on Dumyat" class="alignnone size-full wp-image-181 alignright" decoding="async" height="252" src="/wp-content/uploads/2011/11/lodcoverl.jpg" width="170"/></em></p>
+<p><em><strong>Light on Dumyat</strong></em><br/><em>Rennie McOwan</em> <em>(Honorary President of the Friends of the Ochils)</em><br/><em>Rucksack readers</em></p>
+<p>A brand new edition of the classic children’s adventure novel set in and around the Ochils. Ideal for children of 9 and upwards Light on Dumyat combines survival skills, environmental awareness and mysterious events.  In an era of increasing concern over children being over-protected this adventure story has new relevance.  Above all it’s a ‘cracking good read’.</p>
+<p><img alt="Bonanzas and Jacobites" class="alignnone size-full wp-image-182 alignright" decoding="async" height="264" src="/wp-content/uploads/2011/11/Bonanzas.jpg" width="170"/></p>
+<p> </p>
+<p><em><strong>Bonanzas and Jacobites</strong></em><br/><em>Stephen Moreton</em><br/><em>National Museums of Scotland, 2007</em></p>
+<p>This is the true story of Scotland’s richest silver mine at Alva, Clackmannanshire.  Its discovery in 1715, coinciding with the Jacobite rising, led to an extraordinary sequence of events involving fortunes made and lost, intrigue and betrayal, and a diverse cast of characters including Sir Isaac Newton.</p>
+<p><img alt="The Ochils, Campsie Fells and Lomond Hills: 33 walks in Scotland’s central hills" class="size-full wp-image-159 alignright" decoding="async" height="256" loading="lazy" src="/wp-content/uploads/2011/11/PatrickBaker.jpg" width="170"/></p>
+<p> </p>
+<p><em><strong>The Ochils, Campsie Fells and Lomond Hills: 33 walks in Scotland’s central hills</strong></em><br/><em>Patrick Baker</em><br/><em> Cicerone, 2006</em></p>
+<p>A hillwalking guide with 20 walks in the Ochils. Well-illustrated and with map extracts to show the walks. Enthuses about their sense of remoteness even though very accessible to a large population. Marred by a small number of incorrect navigational instructions.</p>
+<p><img alt="Well Sheltered and Watered: Menstrie Glen, a farming landscape near Stirling" class="size-full wp-image-167 alignright" decoding="async" height="228" loading="lazy" src="/wp-content/uploads/2011/11/2001WellWatered1.jpg" width="170"/></p>
+<p> </p>
+<p><em><strong>Well Sheltered and Watered: Menstrie Glen, a farming landscape near Stirling</strong></em><br/><em>Royal Commission on the Ancient and Historical Monuments of Scotland, 2001</em></p>
+<p>A thriving population ocupied Menstrie Glen prior to the plough giving way to sheep in the late 18th century.  The journal of James Wright of Loss and detailed modern archeological field survey are brought together in this superbly illustrated book to tell the story of the transformation of Menstrie Glen.</p>
+<p><img alt="Blairlogie Boyhood" class="alignnone size-full wp-image-171 alignright" decoding="async" height="245" loading="lazy" src="/wp-content/uploads/2011/11/BlairlogieBoyhood.jpg" width="170"/></p>
+<p> </p>
+<p><em><strong>Blairlogie Boyhood</strong></em><br/><em>Robin A. Kelsall.</em><br/><em>Self-published, 1999</em></p>
+<p>In 1969, the tiny village of Blairlogie became Scotland’s second ever conservation area. Blairlogie Boyhood predates that accolade and is a description of life (from a child’s perspective)  60-plus years ago.<br/>Experiencing none of the threats posed by the excesses of today’s traffic and the actions of some in today’s society, children of that generation had much more freedom than those of today;  especially in an idyllic wee place like Blairlogie. To the author and his friends, the carse, the village and the hills behind formed a giant playground and, as confidence and ambition grew, there were expeditions to the summits above – Goats’ Craig, Castle Law and Dumyat – each furnishing young eyes and imaginations with views to far horizons not readily available to many children. When weather and time warranted, the long hike to Sheriffmuir’s Paradise Pool was one of summer’s great delights.  Blairlogie Boyhood is full of such reminiscences.</p>
+<p><img alt="The Ochils: Placenames, History, Tradition" class="alignnone size-full wp-image-176 alignright" decoding="async" height="229" loading="lazy" src="/wp-content/uploads/2011/11/Placenames-History-Tradition.jpg" width="170"/></p>
+<p> </p>
+<p><em><strong>The Ochils: Placenames, History, Tradition</strong></em><br/><em>A Watson</em><br/><em>Perth &amp; Kinross District Libraries, 1995</em></p>
+<p>An illustrated gazetteer of the placenames of the Ochils from Sherrifmuir to east of Glen Farg, covering the ground above 70-100 metres, not including the fringing settlements.  Hundreds of entries, from Abdie Church to Upper Yetts, illuminate the history of the hills and their use as well as their names.</p>
+<p><em><img alt="The Ochil Hills: An Introduction: Landscape, Wildlife, Heritage, Walks" class="alignnone size-full wp-image-178 alignright" decoding="async" height="241" loading="lazy" src="/wp-content/uploads/2011/11/2004CorbettOchils.jpg" width="170"/></em></p>
+<p> </p>
+<p><em><strong>The Ochil Hills: An Introduction: Landscape, Wildlife, Heritage, Walks</strong></em><br/><em>L Corbett, EK Roy, RC Snaddon</em><br/><em>Forth Naturalist and Historian/Clackmannanshire Field Studies Society, 1994</em></p>
+<p>The extended title says it all! Almost wholly concerned with the Ochils west of Glen Devon and particularly with the  Clackmannanshire and Stirling parts.  Includes geology, climate, natural history, human history, placenames and walks in Alva Glen, Menstrie Glen, and Dollar to Glens Quey/Devon. Illustrated with many diagrams and drawings and some photographs.</p>
+<p><em><img alt="Walk in the Ochils" class="alignnone size-full wp-image-180 alignright" decoding="async" height="261" loading="lazy" src="/wp-content/uploads/2011/11/1984BernardOchils.jpg" width="170"/></em></p>
+<p> </p>
+<p><em><strong>Walks in the Ochils</strong></em><br/><em>R Bernard</em><br/><em>Clackmannan District Libraries, 1984</em><br/>A short collection of personal accounts of walks in the Ochils west of Glen Devon by a now-deceased local hill man. Topography, history and natural history mingle fluently. Originally published as newspaper articles.</p>
+<p></p>
+<p><strong><em>The Ochil Hills  </em></strong><br/><em>Drew Jamieson</em></p>
+<div class="wp-block-image"><figure class="alignright"><img alt="The Ochil Hills" class="wp-image-965" decoding="async" height="300" loading="lazy" sizes="(max-width: 206px) 100vw, 206px" src="/wp-content/uploads/2019/10/special-place-image-206x300.jpg" srcset="/wp-content/uploads/2019/10/special-place-image-206x300.jpg 206w, /wp-content/uploads/2019/10/special-place-image-768x1118.jpg 768w, /wp-content/uploads/2019/10/special-place-image-703x1024.jpg 703w, /wp-content/uploads/2019/10/special-place-image.jpg 2038w" width="206"/></figure></div>
+<p><em>Paperback.  97 pp. 42 B/W Illustrations.  Amazon: £9.90   Direct from author @ £8.00  email: </em> <a class="__cf_email__" data-cfemail="c0a4b5adb9a1b4f280a2b4a9aeb4a5b2aea5b4eea3afad" href="/cdn-cgi/l/email-protection">[email protected]</a><br/>Local resident and founder-member of Friends of the Ochils – Drew Jamieson – has recently published a detailed geography of the Ochil Hills. <br/>Drew describes the Ochil Hills as a <em>“Special Place”.</em> They dominate the northern horizon of the Central Belt of Scotland and provide a scenic gateway into Perth and Kinross.  They stand proud above the surrounding lowlands reaching the highest point in Central Scotland – Ben Cleuch.  This book highlights some of the challenges and suggests some opportunities for the numerous agencies and stakeholders to work together to create a special vision for this <em>“Special Place”.</em></p>
+</div>
+</article>
+<div class="clear"></div>
+</div><!-- end main-content-padding -->
+</main>
+</div>
+</div>
+<footer>
+<p>Friends of the Ochils  |  Scottish Charity: SC022034  | 
+  <a href="/contact-us/">Contact us</a></p>
+</footer>
+<script>
+(function() {
+  var btn  = document.querySelector('.hamburger');
+  var menu = document.getElementById('main-menu-list');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  // Mobile sub-menu toggles
+  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        var li = this.parentElement;
+        li.classList.toggle('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

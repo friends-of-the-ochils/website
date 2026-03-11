@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>David Scott – FotO</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid #d4e0c8;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .site-header .logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+  .site-header .social-links { display: flex; gap: 12px; align-items: center; }
+  .site-header .social-links a img { width: 28px; height: 28px; }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    background: #2d5a1b;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 1;
+  }
+
+  /* ── Navigation ── */
+  nav.main-nav {
+    background: #fff;
+    border-bottom: 2px solid #d4e0c8;
+    position: relative;
+  }
+  nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nav.main-nav li { position: relative; }
+  nav.main-nav a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #2d5a1b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active { color: #1a3a10; text-decoration: underline; }
+
+  /* ── Dropdowns ── */
+  nav.main-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4e0c8;
+    border-top: 2px solid #2d5a1b;
+    min-width: 200px;
+    z-index: 100;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  nav.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    border-top: 1px solid #d4e0c8;
+  }
+  nav.main-nav li:hover > ul { display: flex; }
+  nav.main-nav ul ul a { padding: 9px 14px; font-size: 0.88rem; border-bottom: 1px solid #eef5e8; }
+  nav.main-nav ul ul a:hover { background: #f5f9f2; }
+
+  /* ── Page layout ── */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+  .breadcrumb {
+    font-size: 0.82rem;
+    font-family: Arial, sans-serif;
+    color: #888;
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: #2d5a1b; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: #555; }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    border-bottom: 1px solid #d4e0c8;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Content styles ── */
+  .page-content h2 { font-size: 1.35rem; font-weight: normal; color: #2d5a1b; margin: 28px 0 12px; }
+  .page-content h3 { font-size: 1.1rem; color: #2d5a1b; margin: 20px 0 8px; }
+  .page-content p  { margin-bottom: 16px; }
+  .page-content ul, .page-content ol { margin: 0 0 16px 24px; }
+  .page-content li { margin-bottom: 6px; }
+  .page-content a  { color: #2d5a1b; }
+  .page-content a:hover { color: #1a3a10; }
+  .page-content img { max-width: 100%; height: auto; border-radius: 3px; }
+  .page-content table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 0.93rem; }
+  .page-content th { background: #2d5a1b; color: #fff; padding: 9px 12px; text-align: left; }
+  .page-content td { padding: 8px 12px; border-bottom: 1px solid #e0e8d8; }
+  .page-content tr:nth-child(even) td { background: #f5f9f2; }
+  .page-content blockquote { border-left: 4px solid #2d5a1b; margin: 16px 0; padding: 12px 16px; background: #f5f9f2; font-style: italic; }
+
+  /* ── News list ── */
+  .news-list { list-style: none; margin: 0; padding: 0; }
+  .news-item { border-bottom: 1px solid #d4e0c8; padding: 20px 0; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .news-item h2 a { color: #2d5a1b; text-decoration: none; }
+  .news-item h2 a:hover { text-decoration: underline; }
+  .news-meta { font-size: 0.82rem; font-family: Arial, sans-serif; color: #888; margin-bottom: 10px; }
+
+  /* ── Gallery ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .gallery-grid a { display: block; overflow: hidden; border-radius: 3px; border: 1px solid #d4e0c8; }
+  .gallery-grid img { width: 100%; height: 150px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .gallery-grid a:hover img { opacity: 0.85; }
+
+  /* ── Homepage hero ── */
+  .hero-image { width: 100%; max-height: 380px; object-fit: cover; display: block; }
+  .welcome-box {
+    background: #f5f9f2;
+    border-left: 4px solid #2d5a1b;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 1rem;
+  }
+  .welcome-box h2 { font-size: 1.4rem; color: #2d5a1b; margin-bottom: 12px; font-weight: normal; }
+  .recent-posts { margin-top: 32px; }
+  .recent-posts h2 { font-size: 1.2rem; color: #2d5a1b; margin-bottom: 16px; font-weight: normal; border-bottom: 1px solid #d4e0c8; padding-bottom: 8px; }
+  .recent-posts ul { list-style: none; }
+  .recent-posts li { padding: 8px 0; border-bottom: 1px solid #eef5e8; }
+  .recent-posts li::before { content: "›› "; color: #2d5a1b; }
+  .recent-posts a { color: #2d5a1b; text-decoration: none; }
+  .recent-posts a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: #c8d9b8;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+  }
+  footer a { color: #2d5a1b; }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hamburger { display: block; }
+    nav.main-nav > ul {
+      display: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      border-top: 1px solid #d4e0c8;
+    }
+    nav.main-nav > ul.open { display: flex; }
+    nav.main-nav ul ul {
+      position: static;
+      border: none;
+      border-top: none;
+      box-shadow: none;
+      background: #f5f9f2;
+      padding-left: 12px;
+    }
+    nav.main-nav ul ul ul { padding-left: 20px; }
+    nav.main-nav li:hover > ul { display: none; }
+    nav.main-nav li.open > ul { display: flex; }
+    nav.main-nav a { padding: 10px 16px; border-bottom: 1px solid #e8f0e0; }
+    .has-children > a::after { content: " ▾"; font-size: 0.75rem; }
+    .has-children.open > a::after { content: " ▴"; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    .page-wrapper { padding: 24px 16px 40px; }
+    h1 { font-size: 1.6rem; }
+  }
+  @media (max-width: 480px) {
+    .site-header { padding: 12px 16px; }
+    .site-header .logo img { height: 55px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="/">
+<img alt="Friends of the Ochils" src="/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+</a>
+<div class="social-links">
+<a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
+<img alt="Facebook" src="/wp-content/themes/u-design/styles/common-images/facebook-64x64.png"/>
+</a>
+</div>
+</header>
+<nav aria-label="Main navigation" class="main-nav">
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger">☰</button>
+<ul id="main-menu-list">
+<li><a href="/">Home</a></li>
+<li class="has-children">
+<a href="/our-work/">Our work</a>
+<ul>
+<li><a href="/our-work/forestry/">Forestry</a></li>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/">Other planning issues</a>
+<ul>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/glenquey-quarry/">Glenquey Quarry</a>
+<ul>
+<li><a href="/our-work/other-planning-issues/glenquey-quarry/previous-documents/">Previous documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/our-work/windfarms/">Windfarms</a></li>
+<li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
+<li class="has-children">
+<a href="/our-work/newsletters/">Newsletters</a>
+<ul>
+<li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/latest-news/">Latest news</a></li>
+<li class="has-children">
+<a href="/about-us/">About us</a>
+<ul>
+<li><a href="/about-us/the-origin-of-foto/">The Origin of FOTO</a></li>
+<li><a href="/about-us/our-mission/">Our Mission</a></li>
+<li><a href="/about-us/meet-the-committee/">Meet the Committee</a></li>
+</ul>
+</li>
+<li class="has-children">
+<a href="/the-ochils/">About the hills</a>
+<ul>
+<li><a href="/the-ochils/the-hills/">The Hills</a></li>
+<li><a href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
+<li><a href="/the-ochils/books/">Books about the Ochils</a></li>
+<li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul>
+</li>
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/join-us/">Join us</a></li>
+<li><a href="/contact-us/">Contact us</a></li>
+</ul>
+</nav>
+<div class="page-wrapper">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a> → <a href="/author/">Author</a> → <span>David Scott – FotO</span></nav><h1>David Scott</h1>
+<div class="page-content">
+<main class="grid_24" id="main-content" role="main">
+<div class="main-content-padding">
+<h2 class="margin-top-3">About: David Scott</h2>
+<p>
+</p><div class="small-custom-frame-wrapper alignleft"><div class="custom-frame-inner-wrapper"><div class="custom-frame-padding"><img alt="" class="avatar avatar-100 photo" decoding="async" height="100" src="https://secure.gravatar.com/avatar/0f91dc219375b8bee5504322938118886491116ede843632ae5b36198574d450?s=100&amp;d=blank&amp;r=g" srcset="https://secure.gravatar.com/avatar/0f91dc219375b8bee5504322938118886491116ede843632ae5b36198574d450?s=200&amp;d=blank&amp;r=g 2x" width="100"/></div></div></div>
+<strong>Website:</strong> <a href=""></a><br/>
+<strong>Profile:</strong> <br/>
+<div class="clear"></div>
+<h2>
+				Posts by David Scott:			</h2>
+<p>No posts by this author.</p>
+<div class="clear"></div>
+</div><!-- end main-content-padding -->
+</main>
+</div>
+</div>
+<footer>
+<p>Friends of the Ochils  |  Scottish Charity: SC022034  | 
+  <a href="/contact-us/">Contact us</a></p>
+</footer>
+<script>
+(function() {
+  var btn  = document.querySelector('.hamburger');
+  var menu = document.getElementById('main-menu-list');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  // Mobile sub-menu toggles
+  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        var li = this.parentElement;
+        li.classList.toggle('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

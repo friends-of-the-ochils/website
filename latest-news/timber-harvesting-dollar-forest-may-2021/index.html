@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timber harvesting Dollar Forest   2021 – 2022 – FotO</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid #d4e0c8;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .site-header .logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+  .site-header .social-links { display: flex; gap: 12px; align-items: center; }
+  .site-header .social-links a img { width: 28px; height: 28px; }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    background: #2d5a1b;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 1;
+  }
+
+  /* ── Navigation ── */
+  nav.main-nav {
+    background: #fff;
+    border-bottom: 2px solid #d4e0c8;
+    position: relative;
+  }
+  nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nav.main-nav li { position: relative; }
+  nav.main-nav a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #2d5a1b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active { color: #1a3a10; text-decoration: underline; }
+
+  /* ── Dropdowns ── */
+  nav.main-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4e0c8;
+    border-top: 2px solid #2d5a1b;
+    min-width: 200px;
+    z-index: 100;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  nav.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    border-top: 1px solid #d4e0c8;
+  }
+  nav.main-nav li:hover > ul { display: flex; }
+  nav.main-nav ul ul a { padding: 9px 14px; font-size: 0.88rem; border-bottom: 1px solid #eef5e8; }
+  nav.main-nav ul ul a:hover { background: #f5f9f2; }
+
+  /* ── Page layout ── */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+  .breadcrumb {
+    font-size: 0.82rem;
+    font-family: Arial, sans-serif;
+    color: #888;
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: #2d5a1b; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: #555; }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: normal;
+    color: #2d5a1b;
+    border-bottom: 1px solid #d4e0c8;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Content styles ── */
+  .page-content h2 { font-size: 1.35rem; font-weight: normal; color: #2d5a1b; margin: 28px 0 12px; }
+  .page-content h3 { font-size: 1.1rem; color: #2d5a1b; margin: 20px 0 8px; }
+  .page-content p  { margin-bottom: 16px; }
+  .page-content ul, .page-content ol { margin: 0 0 16px 24px; }
+  .page-content li { margin-bottom: 6px; }
+  .page-content a  { color: #2d5a1b; }
+  .page-content a:hover { color: #1a3a10; }
+  .page-content img { max-width: 100%; height: auto; border-radius: 3px; }
+  .page-content table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 0.93rem; }
+  .page-content th { background: #2d5a1b; color: #fff; padding: 9px 12px; text-align: left; }
+  .page-content td { padding: 8px 12px; border-bottom: 1px solid #e0e8d8; }
+  .page-content tr:nth-child(even) td { background: #f5f9f2; }
+  .page-content blockquote { border-left: 4px solid #2d5a1b; margin: 16px 0; padding: 12px 16px; background: #f5f9f2; font-style: italic; }
+
+  /* ── News list ── */
+  .news-list { list-style: none; margin: 0; padding: 0; }
+  .news-item { border-bottom: 1px solid #d4e0c8; padding: 20px 0; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .news-item h2 a { color: #2d5a1b; text-decoration: none; }
+  .news-item h2 a:hover { text-decoration: underline; }
+  .news-meta { font-size: 0.82rem; font-family: Arial, sans-serif; color: #888; margin-bottom: 10px; }
+
+  /* ── Gallery ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .gallery-grid a { display: block; overflow: hidden; border-radius: 3px; border: 1px solid #d4e0c8; }
+  .gallery-grid img { width: 100%; height: 150px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .gallery-grid a:hover img { opacity: 0.85; }
+
+  /* ── Homepage hero ── */
+  .hero-image { width: 100%; max-height: 380px; object-fit: cover; display: block; }
+  .welcome-box {
+    background: #f5f9f2;
+    border-left: 4px solid #2d5a1b;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 1rem;
+  }
+  .welcome-box h2 { font-size: 1.4rem; color: #2d5a1b; margin-bottom: 12px; font-weight: normal; }
+  .recent-posts { margin-top: 32px; }
+  .recent-posts h2 { font-size: 1.2rem; color: #2d5a1b; margin-bottom: 16px; font-weight: normal; border-bottom: 1px solid #d4e0c8; padding-bottom: 8px; }
+  .recent-posts ul { list-style: none; }
+  .recent-posts li { padding: 8px 0; border-bottom: 1px solid #eef5e8; }
+  .recent-posts li::before { content: "›› "; color: #2d5a1b; }
+  .recent-posts a { color: #2d5a1b; text-decoration: none; }
+  .recent-posts a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: #c8d9b8;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+  }
+  footer a { color: #2d5a1b; }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hamburger { display: block; }
+    nav.main-nav > ul {
+      display: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      border-top: 1px solid #d4e0c8;
+    }
+    nav.main-nav > ul.open { display: flex; }
+    nav.main-nav ul ul {
+      position: static;
+      border: none;
+      border-top: none;
+      box-shadow: none;
+      background: #f5f9f2;
+      padding-left: 12px;
+    }
+    nav.main-nav ul ul ul { padding-left: 20px; }
+    nav.main-nav li:hover > ul { display: none; }
+    nav.main-nav li.open > ul { display: flex; }
+    nav.main-nav a { padding: 10px 16px; border-bottom: 1px solid #e8f0e0; }
+    .has-children > a::after { content: " ▾"; font-size: 0.75rem; }
+    .has-children.open > a::after { content: " ▴"; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    .page-wrapper { padding: 24px 16px 40px; }
+    h1 { font-size: 1.6rem; }
+  }
+  @media (max-width: 480px) {
+    .site-header { padding: 12px 16px; }
+    .site-header .logo img { height: 55px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="/">
+<img alt="Friends of the Ochils" src="/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+</a>
+<div class="social-links">
+<a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
+<img alt="Facebook" src="/wp-content/themes/u-design/styles/common-images/facebook-64x64.png"/>
+</a>
+</div>
+</header>
+<nav aria-label="Main navigation" class="main-nav">
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger">☰</button>
+<ul id="main-menu-list">
+<li><a href="/">Home</a></li>
+<li class="has-children">
+<a href="/our-work/">Our work</a>
+<ul>
+<li><a href="/our-work/forestry/">Forestry</a></li>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/">Other planning issues</a>
+<ul>
+<li class="has-children">
+<a href="/our-work/other-planning-issues/glenquey-quarry/">Glenquey Quarry</a>
+<ul>
+<li><a href="/our-work/other-planning-issues/glenquey-quarry/previous-documents/">Previous documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/our-work/windfarms/">Windfarms</a></li>
+<li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
+<li class="has-children">
+<a href="/our-work/newsletters/">Newsletters</a>
+<ul>
+<li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/latest-news/">Latest news</a></li>
+<li class="has-children">
+<a href="/about-us/">About us</a>
+<ul>
+<li><a href="/about-us/the-origin-of-foto/">The Origin of FOTO</a></li>
+<li><a href="/about-us/our-mission/">Our Mission</a></li>
+<li><a href="/about-us/meet-the-committee/">Meet the Committee</a></li>
+</ul>
+</li>
+<li class="has-children">
+<a href="/the-ochils/">About the hills</a>
+<ul>
+<li><a href="/the-ochils/the-hills/">The Hills</a></li>
+<li><a href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
+<li><a href="/the-ochils/books/">Books about the Ochils</a></li>
+<li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul>
+</li>
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/join-us/">Join us</a></li>
+<li><a href="/contact-us/">Contact us</a></li>
+</ul>
+</nav>
+<div class="page-wrapper">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a> → <a href="/latest-news/">Latest News</a> → <span>Timber harvesting Dollar Forest   2021 – 2022 – FotO</span></nav><h1>Timber harvesting Dollar Forest   2021</h1>
+<div class="page-content">
+<main class="grid_16" id="main-content" role="main">
+<div class="main-content-padding">
+<article class="post-1185 page type-page status-publish hentry" id="post-1185">
+<div class="entry">
+<p class="has-luminous-vivid-orange-color has-text-color">Update:</p>
+<p class="has-luminous-vivid-orange-color has-text-color">Proposed timber harvesting operation on Hillfoots Hill, Dollar Forest has been delayed and we now expect harvesting to commence in mid-July.  Timber haulage is likely to start within a week or so of harvesting. The time scales will be similar to those detailed below with works now expected to last until early into 2022.</p>
+<p>Unfortunately, harvesting is likely to affect the path network within the forest, some of which will be subject to temporary closure and diversion in the interest of public safety. Timber haulage will also affect the use of the main forest road network within the forest, with timber lorries regularly traveling on the forest road.<br/>The estimated volume of timber to be harvested will be around 11,000 tons with harvesting expected to last approximately 20 &amp; 24 weeks depending on the weather. Timber haulage is expected to take a similar amount of time to harvesting and may continue for a short while after harvesting has been completed. As per previous timber haulage operations, timber will be transported east via the Hillfoots Road to access the A91 and this will unfortunately result in some temporary disruption to other users of the road. Haulage will however be planned to minimise disruption to other road users where possible and will avoid peak usage times such as school opening and closing times and the Japanese Gardens. It is likely that very few or no lorries will be operating during weekends. All timber lorries will display flashing beacons when traveling on the Hillfoots Road and within in the forest and will avoid traveling in convoy.<br/>Signage will be displayed at either end of the Hillfoots Road, to warn other road users that timber lorries are using the road and to advise that passing places should be used to give way to the lorries. A notice will be displayed at the forest entrance and on the Hillfoots Road in advance of timber harvesting and haulage to warn other road users of potential disruption and to provide details of the operations.</p>
+<p></p>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-1197" decoding="async" fetchpriority="high" height="697" src="/wp-content/uploads/2021/03/Dollar-forest-harvesting-location.jpg" width="476"/><figcaption class="wp-element-caption"><strong>Dollar forest harvesting location</strong></figcaption></figure>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-1198" decoding="async" height="671" src="/wp-content/uploads/2021/03/Dollar-forest-constraints.jpg" width="943"/><figcaption class="wp-element-caption"><strong>Dollar forest constraints</strong></figcaption></figure>
+<p></p>
+</div>
+</article>
+<div class="clear"></div>
+<article class="post-146030 post type-post status-publish format-standard hentry category-uncategorized" id="post-146030">
+<div class="entry">
+<div class="post-top">
+<h2><a href="/2025/08/14/windburn-windfarm/" rel="bookmark" title="Windburn Windfarm">Windburn Windfarm</a></h2>
+<section class="postmetadata">
+<span>
+		On August 14, 2025 	</span>   <span class="categories-link-divider">/  </span> <span class="postmetadata-categories-link"><a href="/category/uncategorized/" rel="category tag">Uncategorized</a></span>     
+	</section><!-- end postmetadata -->
+</div><!-- end post-top -->
+<div class="clear"></div>
+<p>The Friends of the Ochils have objected to the Windburn Windfarm development which has boundaries around Ben Buck, Blairdenon Hill, Ben Gengie and Craighorn (see details: https://windburnwindfarm.co.uk/project-info). The reason for this is due to the significant adverse impact on the Ochils’ landscape, visual amenity, and recreational use. While we do not campaign against renewable energy, our core aim is to protect the Ochils against unacceptable developments that could harm the landscape and people’s enjoyment of it. If you wish to make a representation on this development before the 22nd August, you can follow this link: https://www.energyconsents.scot/ApplicationDetails.aspx… The representation submitted by</p>
+<a class="read-more-align-left" href="/2025/08/14/windburn-windfarm/" title="Read more"><span>Read more</span> →</a><div class="clear"></div> </div><!-- end entry -->
+</article>
+<div class="divider top-of-page"><a href="#top" title="Top of Page">Back to Top</a></div>
+<article class="post-803 post type-post status-publish format-standard hentry category-uncategorized" id="post-803">
+<div class="entry">
+<div class="post-top">
+<h2><a href="/2019/02/27/saving-scotlands-red-squirrels/" rel="bookmark" title="Saving Scotland’s Red Squirrels">Saving Scotland’s Red Squirrels</a></h2>
+<section class="postmetadata">
+<span>
+		On February 27, 2019 	</span>   <span class="categories-link-divider">/  </span> <span class="postmetadata-categories-link"><a href="/category/uncategorized/" rel="category tag">Uncategorized</a></span>   			<span class="postmetadata-comments-link"> /   <a href="/2019/02/27/saving-scotlands-red-squirrels/#respond">Leave a comment</a></span>
+</section><!-- end postmetadata -->
+</div><!-- end post-top -->
+<div class="clear"></div>
+<p>My name’s Neil and I’m the Administrator for Saving Scotland’s Red Squirrels, a project that works with partners, landowners and volunteers to protect red squirrels where they are most under threat from the spread of non-native grey squirrels. Our Central Lowlands project area (which includes areas of the Forth from Stirling over to Clackmannan) is a key area for red squirrel conservation and we are keen to build up a strong network of volunteers and stakeholders across the region. Please view this map for more details (use the ‘layers’ button on the top right to select the ‘project areas’ layer)</p>
+<a class="read-more-align-left" href="/2019/02/27/saving-scotlands-red-squirrels/" title="Read more"><span>Read more</span> →</a><div class="clear"></div> </div><!-- end entry -->
+</article>
+<div class="divider top-of-page"><a href="#top" title="Top of Page">Back to Top</a></div>
+<article class="post-684 post type-post status-publish format-standard hentry category-uncategorized" id="post-684">
+<div class="entry">
+<div class="post-top">
+<h2><a href="/2016/12/18/light-on-dumyat-by-rennie-mcowan-republished/" rel="bookmark" title="Light on Dumyat by Rennie McOwan republished">Light on Dumyat by Rennie McOwan republished</a></h2>
+<section class="postmetadata">
+<span>
+		On December 18, 2016 	</span>   <span class="categories-link-divider">/  </span> <span class="postmetadata-categories-link"><a href="/category/uncategorized/" rel="category tag">Uncategorized</a></span>   			<span class="postmetadata-comments-link"> /   <a href="/2016/12/18/light-on-dumyat-by-rennie-mcowan-republished/#respond">Leave a comment</a></span>
+</section><!-- end postmetadata -->
+</div><!-- end post-top -->
+<div class="clear"></div>
+<p>A brand new illustrated edition of a children’s classic, Light on Dumyat by Rennie McOwan, is now in its fifth edition and has been specially illustrated for a new young readership.  Rennie is the founder of Friends of the Ochils. This classic tale of adventure, friendship and courage is greatly influenced by the author’s childhood.  Aimed at 7–11 year olds, there are no phones or i-pads, just four resourceful children roaming free, having adventures and being at one with their environment. Light on Dumyat is the first book in a series of four and introduces the key characters, Gavin and the</p>
+<a class="read-more-align-left" href="/2016/12/18/light-on-dumyat-by-rennie-mcowan-republished/" title="Read more"><span>Read more</span> →</a><div class="clear"></div> </div><!-- end entry -->
+</article>
+<div class="divider top-of-page"><a href="#top" title="Top of Page">Back to Top</a></div>
+<div class="clear"></div>
+<div class="clear"></div>
+</div><!-- end main-content-padding -->
+</main>
+</div>
+</div>
+<footer>
+<p>Friends of the Ochils  |  Scottish Charity: SC022034  | 
+  <a href="/contact-us/">Contact us</a></p>
+</footer>
+<script>
+(function() {
+  var btn  = document.querySelector('.hamburger');
+  var menu = document.getElementById('main-menu-list');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  // Mobile sub-menu toggles
+  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        var li = this.parentElement;
+        li.classList.toggle('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
