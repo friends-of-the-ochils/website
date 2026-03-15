@@ -4,290 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join Us – Friends of the Ochils</title>
-  <style>
-    /* ── Base ──────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 16px;
-      line-height: 1.65;
-      color: #333;
-      background: #fff;
-    }
-
-    /* ── Site header (matches existing site) ──────────────── */
-    .site-header {
-      padding: 18px 32px 0;
-      border-bottom: 1px solid #d4e0c8;
-    }
-    .site-header img { height: 80px; }
-
-    nav {
-      background: #fff;
-      border-bottom: 2px solid #d4e0c8;
-      padding: 0 32px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-    }
-    nav ul li a {
-      display: block;
-      padding: 10px 16px;
-      text-decoration: none;
-      color: #2d5a1b;
-      font-size: 0.95rem;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    nav ul li a:hover, nav ul li a.active { color: #1a3a10; text-decoration: underline; }
-
-    /* ── Page layout ──────────────────────────────────────── */
-    .page-wrapper {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 40px 24px 60px;
-    }
-
-    /* Breadcrumb */
-    .breadcrumb {
-      font-size: 0.85rem;
-      font-family: Arial, sans-serif;
-      color: #666;
-      margin-bottom: 28px;
-    }
-    .breadcrumb a { color: #2d5a1b; text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: normal;
-      color: #2d5a1b;
-      border-bottom: 1px solid #d4e0c8;
-      padding-bottom: 14px;
-      margin-bottom: 28px;
-    }
-
-    .intro {
-      background: #f5f9f2;
-      border-left: 4px solid #2d5a1b;
-      padding: 16px 20px;
-      margin-bottom: 36px;
-      font-size: 0.97rem;
-    }
-    .intro strong { color: #2d5a1b; }
-
-    /* ── Membership fee table ─────────────────────────────── */
-    .fee-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 36px;
-      font-family: Arial, sans-serif;
-      font-size: 0.92rem;
-    }
-    .fee-table th {
-      background: #2d5a1b;
-      color: #fff;
-      padding: 10px 14px;
-      text-align: left;
-    }
-    .fee-table td {
-      padding: 9px 14px;
-      border-bottom: 1px solid #e0e8d8;
-    }
-    .fee-table tr:nth-child(even) td { background: #f5f9f2; }
-    .fee-table td:last-child { font-weight: bold; color: #2d5a1b; }
-
-    /* ── Form ─────────────────────────────────────────────── */
-    form { font-family: Arial, Helvetica, sans-serif; }
-
-    .form-section {
-      margin-bottom: 36px;
-      padding: 24px;
-      border: 1px solid #d4e0c8;
-      border-radius: 4px;
-    }
-    .form-section h2 {
-      font-size: 1.15rem;
-      font-family: Georgia, serif;
-      color: #2d5a1b;
-      font-weight: normal;
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #d4e0c8;
-    }
-
-    .field-row {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      flex: 1;
-      min-width: 160px;
-    }
-    .field.full { flex: 0 0 100%; min-width: 0; }
-    .field.narrow { flex: 0 0 120px; min-width: 0; }
-
-    label {
-      font-size: 0.88rem;
-      font-weight: bold;
-      color: #444;
-    }
-    label .req { color: #c0392b; margin-left: 2px; }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    textarea,
-    select {
-      padding: 8px 10px;
-      border: 1px solid #aac090;
-      border-radius: 3px;
-      font-size: 0.95rem;
-      font-family: Arial, sans-serif;
-      color: #333;
-      width: 100%;
-      background: #fafcf8;
-      transition: border-color 0.15s;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #2d5a1b;
-      background: #fff;
-    }
-    textarea { resize: vertical; min-height: 90px; }
-
-    /* Membership type radio group */
-    .membership-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
-    .membership-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid #d4e0c8;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.1s;
-    }
-    .membership-option:hover { background: #f5f9f2; }
-    .membership-option input[type="radio"] { accent-color: #2d5a1b; width: 16px; height: 16px; cursor: pointer; }
-    .membership-option .opt-label { flex: 1; font-size: 0.95rem; color: #333; }
-    .membership-option .opt-price { font-weight: bold; color: #2d5a1b; }
-    .membership-option.selected { background: #eef5e8; border-color: #2d5a1b; }
-
-    /* Donation amount – shown when Donation is selected */
-    #donation-amount-row { display: none; margin-top: 12px; }
-    #donation-amount-row.visible { display: flex; }
-
-    /* Payment method */
-    .payment-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
-    .payment-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      border: 1px solid #d4e0c8;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    .payment-option:hover { background: #f5f9f2; }
-    .payment-option input[type="radio"] { accent-color: #2d5a1b; width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
-    .payment-option .pay-text { font-size: 0.93rem; line-height: 1.5; }
-
-    .bank-details {
-      background: #f5f9f2;
-      border: 1px solid #d4e0c8;
-      border-radius: 3px;
-      padding: 14px 18px;
-      font-size: 0.9rem;
-      margin-top: 14px;
-    }
-    .bank-details strong { display: block; margin-bottom: 6px; color: #2d5a1b; }
-
-    /* Cheque amount – shown when cheque is selected */
-    #cheque-amount-row { display: none; margin-top: 12px; }
-    #cheque-amount-row.visible { display: flex; }
-
-    /* Checkboxes */
-    .check-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 14px;
-      border: 1px solid #d4e0c8;
-      border-radius: 3px;
-      margin-bottom: 12px;
-    }
-    .check-option input[type="checkbox"] {
-      accent-color: #2d5a1b;
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-    .check-option label { font-weight: normal; font-size: 0.93rem; cursor: pointer; }
-
-    /* Privacy notice */
-    .privacy-note {
-      font-size: 0.82rem;
-      color: #666;
-      margin-top: 8px;
-    }
-    .privacy-note a { color: #2d5a1b; }
-
-    /* Submit button */
-    .submit-btn {
-      display: inline-block;
-      background: #2d5a1b;
-      color: #fff;
-      padding: 13px 36px;
-      border: none;
-      border-radius: 3px;
-      font-size: 1rem;
-      font-family: Georgia, serif;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .submit-btn:hover { background: #1a3a10; }
-
-    /* Success message (hidden by default) */
-    #success-message {
-      display: none;
-      background: #eef5e8;
-      border: 2px solid #2d5a1b;
-      border-radius: 4px;
-      padding: 24px;
-      text-align: center;
-      margin-top: 24px;
-    }
-    #success-message h3 { color: #2d5a1b; margin-bottom: 10px; }
-
-    /* ── Footer ───────────────────────────────────────────── */
-    footer {
-      background: #c8d9b8;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.85rem;
-      font-family: Arial, sans-serif;
-    }
-
-    @media (max-width: 600px) {
-      .field-row { flex-direction: column; }
-      .field.narrow { flex: 1; }
-      nav ul { gap: 0; }
-      nav ul li a { padding: 8px 10px; font-size: 0.85rem; }
-    }
-  </style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+  /* ── Join Us page-specific styles ── */
+  .intro { background: var(--green-light-bg); border-left: 4px solid var(--green-primary); padding: 16px 20px; margin-bottom: 36px; font-size: 0.97rem; }
+  .intro strong { color: var(--green-primary); }
+  .fee-table { width: 100%; border-collapse: collapse; margin-bottom: 36px; font-family: Arial, sans-serif; font-size: 0.92rem; }
+  .fee-table th { background: var(--green-primary); color: #fff; padding: 10px 14px; text-align: left; }
+  .fee-table td { padding: 9px 14px; border-bottom: 1px solid #e0e8d8; }
+  .fee-table tr:nth-child(even) td { background: var(--green-light-bg); }
+  .fee-table td:last-child { font-weight: bold; color: var(--green-primary); }
+  form { font-family: Arial, Helvetica, sans-serif; }
+  .form-section { margin-bottom: 36px; padding: 24px; border: 1px solid var(--green-border); border-radius: 4px; }
+  .form-section h2 { font-size: 1.15rem; font-family: Georgia, serif; color: var(--green-primary); font-weight: normal; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--green-border); }
+  .field-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .field { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 160px; }
+  .field.full { flex: 0 0 100%; min-width: 0; }
+  .field.narrow { flex: 0 0 120px; min-width: 0; }
+  label { font-size: 0.88rem; font-weight: bold; color: #444; }
+  label .req { color: #c0392b; margin-left: 2px; }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select { padding: 8px 10px; border: 1px solid #aac090; border-radius: 3px; font-size: 0.95rem; font-family: Arial, sans-serif; color: var(--text-main); width: 100%; background: #fafcf8; transition: border-color 0.15s; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--green-primary); background: #fff; }
+  textarea { resize: vertical; min-height: 90px; }
+  .membership-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .membership-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--green-border); border-radius: 3px; cursor: pointer; transition: background 0.1s; }
+  .membership-option:hover { background: var(--green-light-bg); }
+  .membership-option input[type="radio"] { accent-color: var(--green-primary); width: 16px; height: 16px; cursor: pointer; }
+  .membership-option .opt-label { flex: 1; font-size: 0.95rem; }
+  .membership-option .opt-price { font-weight: bold; color: var(--green-primary); }
+  .membership-option.selected { background: #eef5e8; border-color: var(--green-primary); }
+  #donation-amount-row { display: none; margin-top: 12px; }
+  #donation-amount-row.visible { display: flex; }
+  .payment-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .payment-option { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border: 1px solid var(--green-border); border-radius: 3px; cursor: pointer; }
+  .payment-option:hover { background: var(--green-light-bg); }
+  .payment-option input[type="radio"] { accent-color: var(--green-primary); width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .payment-option .pay-text { font-size: 0.93rem; line-height: 1.5; }
+  .bank-details { background: var(--green-light-bg); border: 1px solid var(--green-border); border-radius: 3px; padding: 14px 18px; font-size: 0.9rem; margin-top: 14px; }
+  .bank-details strong { display: block; margin-bottom: 6px; color: var(--green-primary); }
+  #cheque-amount-row { display: none; margin-top: 12px; }
+  #cheque-amount-row.visible { display: flex; }
+  .check-option { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--green-border); border-radius: 3px; margin-bottom: 12px; }
+  .check-option input[type="checkbox"] { accent-color: var(--green-primary); width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .check-option label { font-weight: normal; font-size: 0.93rem; cursor: pointer; }
+  .privacy-note { font-size: 0.82rem; color: #666; margin-top: 8px; }
+  .privacy-note a { color: var(--green-primary); }
+  #success-message { display: none; background: #eef5e8; border: 2px solid var(--green-primary); border-radius: 4px; padding: 24px; text-align: center; margin-top: 24px; }
+  #success-message h3 { color: var(--green-primary); margin-bottom: 10px; }
+  @media (max-width: 600px) { .field-row { flex-direction: column; } .field.narrow { flex: 1; } }
+</style>
+  <meta property="og:title" content="Join Us – Friends of the Ochils"/>
+  <meta property="og:site_name" content="Friends of the Ochils"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://www.friendsoftheochils.org.uk/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+  <meta name="twitter:card" content="summary"/>
 </head>
 <body>
 

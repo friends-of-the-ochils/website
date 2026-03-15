@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: friends-of-the-ochils/website
+  branch: main
+  base_url: https://website-88b.pages.dev
+
+# Editorial workflow lets you draft articles before publishing
+publish_mode: editorial_workflow
+
+media_folder: "wp-content/uploads/news"
+public_folder: "/wp-content/uploads/news"
+
+collections:
+  - name: "news"
+    label: "News Articles"
+    label_singular: "News Article"
+    folder: "latest-news"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: "Title",         name: "title",       widget: "string" }
+      - { label: "Date",          name: "date",        widget: "datetime", format: "YYYY-MM-DD", date_format: "DD MMMM YYYY", time_format: false }
+      - { label: "Summary",       name: "summary",     widget: "string",   hint: "One-sentence summary shown on the news listing page" }
+      - { label: "Body",          name: "body",        widget: "markdown" }
+      - { label: "Facebook share image", name: "og_image", widget: "image", required: false, hint: "Optional image shown when shared on Facebook" }
