@@ -5,8 +5,6 @@ backend:
   base_url: https://website-88b.pages.dev
   auth_endpoint: /api/auth
 
-# Editorial workflow lets you draft articles before publishing
-publish_mode: editorial_workflow
 
 media_folder: "wp-content/uploads/news"
 public_folder: "/wp-content/uploads/news"
