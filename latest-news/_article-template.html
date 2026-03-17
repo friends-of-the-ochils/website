@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  FotO NEWS ARTICLE TEMPLATE                                      ║
+  ║  How to use:                                                     ║
+  ║  1. Copy this file and rename it to match your article slug,     ║
+  ║     e.g. latest-news/my-article-title/index.html                 ║
+  ║  2. Fill in the five <!-- EDIT --> sections below.               ║
+  ║  3. Save and push to GitHub — Cloudflare Pages will deploy it.   ║
+  ║  4. Add a link to the new page in latest-news/index.html.        ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- EDIT 1: Page title (shown in browser tab and search results) -->
+<title>Article Title Here – FotO</title>
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="/styles.css"/>
+
+<!-- EDIT 2: Open Graph / Facebook sharing tags -->
+<meta property="og:title" content="Article Title Here"/>
+<meta property="og:description" content="One or two sentence summary of the article for Facebook and search snippets."/>
+<meta property="og:url" content="https://www.friendsoftheochils.org.uk/latest-news/article-slug-here/"/>
+<meta property="og:site_name" content="Friends of the Ochils"/>
+<meta property="og:type" content="article"/>
+<!-- og:image — ideally 1200×630px. Use a gallery image or upload one to wp-content/uploads/news/ -->
+<meta property="og:image" content="https://www.friendsoftheochils.org.uk/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<header class="site-header">
+<a class="logo" href="/"><img alt="Friends of the Ochils" src="/wp-content/uploads/2011/11/foto_brand-jpeg1-300x134.jpg"/></a>
+<div class="social-links">
+<a aria-label="Facebook" href="https://www.facebook.com/Friendsoftheochils" rel="noopener" target="_blank">
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+  <rect width="28" height="28" rx="5" fill="#1877F2"/>
+  <path d="M19 14h-3v-2c0-.8.4-1 1-1h2V8h-3c-2.8 0-4 1.8-4 4v2h-2v3h2v8h4v-8h2.6L19 14z" fill="#fff"/>
+</svg></a></div></header>
+
+<nav aria-label="Main navigation" class="main-nav">
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger">&#9776;</button>
+<ul id="main-menu-list">
+<li><a href="/">Home</a></li>
+<li class="has-children"><a href="/our-work/">Our work</a><ul>
+  <li><a href="/our-work/forestry/">Forestry</a></li>
+  <li class="has-children"><a href="/our-work/other-planning-issues/">Other planning issues</a><ul>
+    <li class="has-children"><a href="/our-work/other-planning-issues/glenquey-quarry/">Glenquey Quarry</a><ul>
+      <li><a href="/our-work/other-planning-issues/glenquey-quarry/previous-documents/">Previous documents</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a href="/our-work/windfarms/">Windfarms</a></li>
+  <li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
+  <li class="has-children"><a href="/our-work/newsletters/">Newsletters</a><ul>
+    <li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
+  </ul></li>
+</ul></li>
+<li><a href="/latest-news/" class="active">Latest news</a></li>
+<li class="has-children"><a href="/about-us/">About us</a><ul>
+  <li><a href="/about-us/the-origin-of-foto/">The Origin of FOTO</a></li>
+  <li><a href="/about-us/our-mission/">Our Mission</a></li>
+  <li><a href="/about-us/meet-the-committee/">Meet the Committee</a></li>
+</ul></li>
+<li class="has-children"><a href="/the-ochils/">About the hills</a><ul>
+  <li><a href="/the-ochils/the-hills/">The Hills</a></li>
+  <li><a href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
+  <li><a href="/the-ochils/books/">Books about the Ochils</a></li>
+  <li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul></li>
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/join-us/">Join us</a></li>
+<li><a href="/contact-us/">Contact us</a></li>
+</ul></nav>
+
+<div class="page-wrapper">
+
+  <!-- EDIT 3: Breadcrumb — update the last <span> to your article title -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rarr; <a href="/latest-news/">Latest News</a> &rarr; <span>Article Title Here</span>
+  </nav>
+
+  <!-- EDIT 4: Article header — title and date -->
+  <h1>Article Title Here</h1>
+  <p class="news-date">17 March 2026</p><!-- date format: DD Month YYYY -->
+
+  <div class="page-content">
+
+    <!-- EDIT 5: Article body — write your content here using standard HTML.
+         Useful tags:
+           <p>          paragraph
+           <h2>         sub-heading
+           <h3>         smaller sub-heading
+           <ul><li>     bullet list
+           <ol><li>     numbered list
+           <strong>     bold
+           <em>         italic
+           <a href="">  link
+           <img src="" alt=""/>   image (upload to /wp-content/uploads/news/ first)
+           <blockquote> pull quote
+    -->
+
+    <p>Start writing your article here. This first paragraph will appear as the introduction.</p>
+
+    <p>Add more paragraphs as needed.</p>
+
+    <h2>A sub-heading if needed</h2>
+
+    <p>More content here.</p>
+
+    <!-- Link back to the news index at the bottom -->
+    <p style="margin-top: 2rem"><a href="/latest-news/">&larr; Back to Latest News</a></p>
+
+  </div><!-- .page-content -->
+
+</div><!-- .page-wrapper -->
+
+<footer>
+  <p>Friends of the Ochils &nbsp;|&nbsp; Scottish Charity: SC022034 &nbsp;|&nbsp;
+  <a href="/contact-us/">Contact us</a></p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger'),menu=document.getElementById('main-menu-list');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(l){
+    l.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();this.parentElement.classList.toggle('open');}});
+  });
+})();
+</script>
+
+</body>
+</html>
