@@ -237,6 +237,24 @@ ${HAMBURGER_SCRIPT}
 fs.writeFileSync(path.join(NEWS_DIR, 'index.html'), newsIndex, 'utf8');
 console.log(`  ✓ Rebuilt latest-news/index.html (${articles.length} articles)`);
 
+// ── Update homepage recent-posts section ──────────────────────────────────────
+const HOMEPAGE = path.join(__dirname, 'index.html');
+if (fs.existsSync(HOMEPAGE) && articles.length > 0) {
+  let homeHtml = fs.readFileSync(HOMEPAGE, 'utf8');
+  const recent = articles.slice(0, 3);
+  const recentLis = recent.map(a =>
+    `        <li><a href="/latest-news/${a.slug}/">${a.title}</a></li>`
+  ).join('\n');
+  const newBlock =
+    `<div class="recent-posts">\n      <h2>Recent posts on our \'Latest news\' blog</h2>\n      <ul>\n${recentLis}\n      </ul>\n    </div>`;
+  homeHtml = homeHtml.replace(
+    /<div class="recent-posts">[\s\S]*?<\/div>/,
+    newBlock
+  );
+  fs.writeFileSync(HOMEPAGE, homeHtml, 'utf8');
+  console.log(`  ✓ Updated homepage recent posts (${recent.map(a => a.slug).join(', ')})`);
+}
+
 // ── Update sitemap.xml ────────────────────────────────────────────────────────
 const today = new Date().toISOString().slice(0, 10);
 
