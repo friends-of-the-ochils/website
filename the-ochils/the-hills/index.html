@@ -151,28 +151,6 @@ corporate world has been trying so hard to impose over recent years.</p>
 <p>Friends of the Ochils  |  Scottish Charity: SC022034  | 
   <a href="/contact-us/">Contact us</a></p>
 </footer>
-<script>
-(function() {
-  var btn  = document.querySelector('.hamburger');
-  var menu = document.getElementById('main-menu-list');
-  if (!btn || !menu) return;
-
-  btn.addEventListener('click', function() {
-    var open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-  });
-
-  // Mobile sub-menu toggles
-  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        var li = this.parentElement;
-        li.classList.toggle('open');
-      }
-    });
-  });
-})();
-</script>
+<script src="/nav.js"></script>
 </body>
 </html>

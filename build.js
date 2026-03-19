@@ -59,16 +59,7 @@ const NAV = `<header class="site-header">
 <li><a href="/contact-us/">Contact us</a></li>
 </ul></nav>`;
 
-const HAMBURGER_SCRIPT = `<script>
-(function(){
-  var btn=document.querySelector('.hamburger'),menu=document.getElementById('main-menu-list');
-  if(!btn||!menu)return;
-  btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
-  document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(l){
-    l.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();this.parentElement.classList.toggle('open');}});
-  });
-})();
-</script>`;
+const HAMBURGER_SCRIPT = `<script src="/nav.js"></script>`;
 
 // ── HTML page template ────────────────────────────────────────────────────────
 function articlePage({ title, dateStr, summary, bodyHtml, slug, ogImage }) {

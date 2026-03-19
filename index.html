@@ -173,37 +173,18 @@
 </footer>
 
 
+<script src="/nav.js"></script>
 <script>
-(function() {
-  /* ── Hamburger ── */
-  var btn  = document.querySelector('.hamburger');
-  var menu = document.getElementById('main-menu-list');
-  if (btn && menu) {
-    btn.addEventListener('click', function() {
-      var open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-    });
-    document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          this.parentElement.classList.toggle('open');
-        }
-      });
-    });
-  }
-
-  /* ── Carousel ── */
-  var track   = document.getElementById('carousel-track');
-  var dotsEl  = document.getElementById('carousel-dots');
+/* ── Carousel ── */
+(function(){
+  var track  = document.getElementById('carousel-track');
+  var dotsEl = document.getElementById('carousel-dots');
   if (!track) return;
-
-  var slides  = track.querySelectorAll('.carousel-slide');
-  var total   = slides.length;
+  var slides = track.querySelectorAll('.carousel-slide');
+  var total  = slides.length;
   var current = 0;
   var timer;
 
-  // Build dots
   slides.forEach(function(_, i) {
     var d = document.createElement('button');
     d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -232,12 +213,10 @@
     goTo(current + 1); resetTimer();
   });
 
-  // Pause on hover
   var carousel = track.closest('.carousel');
   carousel.addEventListener('mouseenter', function() { clearInterval(timer); });
   carousel.addEventListener('mouseleave', resetTimer);
 
-  // Touch/swipe support
   var touchX = null;
   carousel.addEventListener('touchstart', function(e) { touchX = e.touches[0].clientX; }, {passive:true});
   carousel.addEventListener('touchend', function(e) {

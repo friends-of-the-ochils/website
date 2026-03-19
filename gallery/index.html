@@ -445,73 +445,7 @@
   <button id="lightbox-next" aria-label="Next image">&#8250;</button>
 </div>
 
-<script>
-(function(){
-  /* ── Hamburger ── */
-  var btn=document.querySelector('.hamburger'),menu=document.getElementById('main-menu-list');
-  if(btn&&menu){
-    btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
-    document.querySelectorAll('nav.main-nav .has-children > a').forEach(function(l){
-      l.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();this.parentElement.classList.toggle('open');}});
-    });
-  }
-
-  /* ── Lightbox ── */
-  var lb       = document.getElementById('lightbox');
-  var lbImg    = document.getElementById('lightbox-img');
-  var lbCap    = document.getElementById('lightbox-caption');
-  var lbClose  = document.getElementById('lightbox-close');
-  var lbPrev   = document.getElementById('lightbox-prev');
-  var lbNext   = document.getElementById('lightbox-next');
-  var links    = Array.from(document.querySelectorAll('#gallery-grid a'));
-  var current  = 0;
-
-  function openLightbox(idx) {
-    current = idx;
-    var a   = links[idx];
-    lbImg.src = a.href;
-    lbImg.alt = a.querySelector('img').alt;
-    lbCap.textContent = a.dataset.caption || '';
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    lbClose.focus();
-  }
-
-  function closeLightbox() {
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-    links[current].focus();
-  }
-
-  links.forEach(function(a, i) {
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      openLightbox(i);
-    });
-  });
-
-  lbClose.addEventListener('click', closeLightbox);
-
-  lbPrev.addEventListener('click', function() {
-    openLightbox((current - 1 + links.length) % links.length);
-  });
-
-  lbNext.addEventListener('click', function() {
-    openLightbox((current + 1) % links.length);
-  });
-
-  lb.addEventListener('click', function(e) {
-    if (e.target === lb) closeLightbox();
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape')      closeLightbox();
-    if (e.key === 'ArrowLeft')   openLightbox((current - 1 + links.length) % links.length);
-    if (e.key === 'ArrowRight')  openLightbox((current + 1) % links.length);
-  });
-})();
-</script>
+<script src="/nav.js"></script>
 
 </body>
 </html>
