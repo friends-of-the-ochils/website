@@ -158,6 +158,9 @@ entries.forEach(entry => {
 
   // Handle existing HTML subdirectories (pre-migration articles)
   } else if (fs.statSync(fullPath).isDirectory()) {
+    // Skip directories that have a companion .md file — already handled above
+    if (entries.includes(entry + '.md')) return;
+
     const htmlPath = path.join(fullPath, 'index.html');
     if (!fs.existsSync(htmlPath)) return;
 
