@@ -446,6 +446,77 @@
 </div>
 
 <script src="/nav.js"></script>
+<script>
+/* ── Gallery lightbox ── */
+(function () {
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lightbox-img');
+  var lbCap   = document.getElementById('lightbox-caption');
+  var lbClose = document.getElementById('lightbox-close');
+  var lbPrev  = document.getElementById('lightbox-prev');
+  var lbNext  = document.getElementById('lightbox-next');
+
+  // Build an ordered list of all gallery links
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll('.gallery-grid a')
+  );
+  var current = 0;
+
+  function openAt(idx) {
+    current = (idx + links.length) % links.length;
+    var a = links[current];
+    lbImg.src = a.getAttribute('href');
+    lbImg.alt = a.querySelector('img') ? a.querySelector('img').getAttribute('alt') : '';
+    lbCap.textContent = a.getAttribute('data-caption') || '';
+    lb.classList.add('open');
+    lbClose.focus();
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    lbImg.src = '';
+  }
+
+  // Open on thumbnail click
+  links.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openAt(i);
+    });
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', function () { openAt(current - 1); });
+  lbNext.addEventListener('click', function () { openAt(current + 1); });
+
+  // Close on backdrop click (not on img/buttons)
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb) close();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  { openAt(current - 1); }
+    if (e.key === 'ArrowRight') { openAt(current + 1); }
+    if (e.key === 'Escape')     { close(); }
+  });
+
+  // Touch swipe (same 40 px threshold as carousel)
+  var touchX = null;
+  lb.addEventListener('touchstart', function (e) {
+    touchX = e.touches[0].clientX;
+  }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      openAt(diff > 0 ? current + 1 : current - 1);
+    }
+    touchX = null;
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>
