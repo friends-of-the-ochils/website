@@ -168,12 +168,21 @@ entries.forEach(entry => {
       ? titleMatch[1].replace(/\s*[–-]\s*FotO\s*$/, '').trim()
       : entry;
 
+    // Read optional published date from <meta property="article:published_time" content="YYYY-MM-DD"/>
+    const dateMetaMatch = html.match(/<meta\s+property="article:published_time"\s+content="([^"]+)"/);
+    const dateVal   = dateMetaMatch ? new Date(dateMetaMatch[1]) : new Date(0);
+    const dateStr   = dateMetaMatch ? formatDate(dateMetaMatch[1]) : '';
+
+    // Read optional summary
+    const summaryMatch = html.match(/<meta\s+property="og:description"\s+content="([^"]+)"/);
+    const summary = summaryMatch ? summaryMatch[1] : '';
+
     articles.push({
-      slug:    entry,
+      slug:  entry,
       title,
-      date:    new Date(0), // existing articles have no reliable date — sort to bottom
-      dateStr: '',
-      summary: '',
+      date:  isNaN(dateVal) ? new Date(0) : dateVal,
+      dateStr,
+      summary,
     });
   }
 });
