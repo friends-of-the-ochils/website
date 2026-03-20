@@ -240,10 +240,14 @@ h1 {
 .carousel {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  background: #000;
-  border-radius: 4px;
   margin-bottom: 1.5rem;
+}
+/* Inner wrapper clips the sliding images */
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #000;
 }
 .carousel-track {
   display: flex;
@@ -264,7 +268,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem 0.6rem;
   background: linear-gradient(transparent, rgba(0,0,0,0.55));
   color: #fff;
   font-size: 0.85rem;
@@ -289,26 +293,24 @@ h1 {
 .carousel-btn:hover { opacity: 1; background: rgba(0,0,0,0.4); }
 .carousel-btn.prev { left: 0.5rem; }
 .carousel-btn.next { right: 0.5rem; }
+/* Dots sit below the image in their own strip */
 .carousel-dots {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 6px;
-  z-index: 2;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.5rem 0 0.2rem;
 }
 .carousel-dot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.5);
+  background: var(--green-border);
   border: none;
   cursor: pointer;
   padding: 0;
   transition: background 0.2s;
 }
-.carousel-dot.active { background: #fff; }
+.carousel-dot.active { background: var(--green-primary); }
 @media (max-width: 600px) {
   .carousel-slide img { height: 220px; }
 }
