@@ -150,7 +150,10 @@
       <button class="carousel-btn next" aria-label="Next image">&#8250;</button>
       </div><!-- .carousel-inner -->
 
-      <div class="carousel-dots" id="carousel-dots" aria-hidden="true"></div>
+      <div class="carousel-footer">
+        <span class="carousel-caption-text" id="carousel-caption-text"></span>
+        <div class="carousel-dots" id="carousel-dots" aria-hidden="true"></div>
+      </div>
     </div><!-- .carousel -->
 
     <div class="welcome-box">
@@ -180,8 +183,9 @@
 <script>
 /* ── Carousel ── */
 (function(){
-  var track  = document.getElementById('carousel-track');
-  var dotsEl = document.getElementById('carousel-dots');
+  var track   = document.getElementById('carousel-track');
+  var dotsEl  = document.getElementById('carousel-dots');
+  var capText = document.getElementById('carousel-caption-text');
   if (!track) return;
   var slides = track.querySelectorAll('.carousel-slide');
   var total  = slides.length;
@@ -202,6 +206,9 @@
     dotsEl.querySelectorAll('.carousel-dot').forEach(function(d, i) {
       d.classList.toggle('active', i === current);
     });
+    // Update caption below image
+    var cap = slides[current].querySelector('.carousel-caption');
+    if (capText) capText.textContent = cap ? cap.textContent : '';
   }
 
   function resetTimer() {
@@ -229,6 +236,7 @@
     touchX = null;
   }, {passive:true});
 
+  goTo(0);
   resetTimer();
 })();
 </script>

@@ -263,17 +263,8 @@ h1 {
   object-fit: cover;
   display: block;
 }
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem 1rem 0.6rem;
-  background: linear-gradient(transparent, rgba(0,0,0,0.55));
-  color: #fff;
-  font-size: 0.85rem;
-  pointer-events: none;
-}
+/* Caption hidden inside slides — text is pulled out by JS into the strip below */
+.carousel-caption { display: none; }
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -293,12 +284,22 @@ h1 {
 .carousel-btn:hover { opacity: 1; background: rgba(0,0,0,0.4); }
 .carousel-btn.prev { left: 0.5rem; }
 .carousel-btn.next { right: 0.5rem; }
-/* Dots sit below the image in their own strip */
+/* Strip below image: caption left, dots right */
+.carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.25rem 0.1rem;
+  min-height: 1.8rem;
+}
+.carousel-caption-text {
+  font-size: 0.82rem;
+  color: var(--green-primary);
+  font-style: italic;
+}
 .carousel-dots {
   display: flex;
-  justify-content: center;
   gap: 8px;
-  padding: 0.5rem 0 0.2rem;
 }
 .carousel-dot {
   width: 10px;
