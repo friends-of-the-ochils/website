@@ -1,7 +1,7 @@
 ---
 title: Light on Dumyat by Rennie McOwan republished
 date: 2016-12-18
-summary: A brand new illustrated fifth edition of Light on Dumyat — the classic children's adventure story by Rennie McOwan, founder of Friends of the Ochils.
+summary: "A brand new illustrated fifth edition of Light on Dumyat — the classic children's adventure story by Rennie McOwan, founder of Friends of the Ochils."
 ---
 
 A brand new illustrated edition of a children's classic, *Light on Dumyat* by Rennie McOwan, is now in its fifth edition and has been specially illustrated for a new young readership. Rennie is the [founder](/about-us/the-origin-of-foto/) of Friends of the Ochils.

@@ -1,7 +1,7 @@
 ---
 title: Craighead Windfarm Appeal Allowed — Eight Turbines Approved
 date: 2025-11-07
-summary: The Scottish Ministers' Reporter has allowed the planning appeal for the Craighead Windfarm near Dunning Glen, granting permission for eight wind turbines.
+summary: "The Scottish Ministers' Reporter has allowed the planning appeal for the Craighead Windfarm near Dunning Glen, granting permission for eight wind turbines."
 ---
 
 The Planning and Environmental Appeals Division (DPEA) has issued its decision on the Craighead Windfarm appeal, allowing the application for eight wind turbines near Dunning Glen and granting planning permission subject to 28 conditions.

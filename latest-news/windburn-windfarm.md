@@ -1,7 +1,7 @@
 ---
 title: Windburn Windfarm
 date: 2025-08-14
-summary: Friends of the Ochils have objected to the Windburn Windfarm development due to its significant adverse impact on the Ochils' landscape, visual amenity, and recreational use.
+summary: "Friends of the Ochils have objected to the Windburn Windfarm development due to its significant adverse impact on the Ochils' landscape, visual amenity, and recreational use."
 ---
 
 The Friends of the Ochils have objected to the Windburn Windfarm development which has boundaries around Ben Buck, Blairdenon Hill, Ben Gengie and Craighorn (see [project details](https://windburnwindfarm.co.uk/project-info)).

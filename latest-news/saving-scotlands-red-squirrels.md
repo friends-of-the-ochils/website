@@ -1,7 +1,7 @@
 ---
-title: Saving Scotland's Red Squirrels
+title: "Saving Scotland's Red Squirrels"
 date: 2019-02-27
-summary: A message from the Saving Scotland's Red Squirrels project, seeking volunteers and stakeholders in the Ochils area to help protect red squirrels from the spread of grey squirrels.
+summary: "A message from the Saving Scotland's Red Squirrels project, seeking volunteers and stakeholders in the Ochils area to help protect red squirrels from the spread of grey squirrels."
 ---
 
 My name's Neil and I'm the Administrator for Saving Scotland's Red Squirrels, a project that works with partners, landowners and volunteers to protect red squirrels where they are most under threat from the spread of non-native grey squirrels.

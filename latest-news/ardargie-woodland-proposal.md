@@ -1,5 +1,5 @@
 ---
-title: Ardargie Woodland Proposal: FotO Concludes Review
+title: "Ardargie Woodland Proposal: FotO Concludes Review"
 date: 2025-05-03
 summary: FotO has concluded its formal review of the Ardargie Woodland Creation application, confirming no further concerns after key access issues were resolved.
 ---
