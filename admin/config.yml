@@ -2,7 +2,7 @@ backend:
   name: github
   repo: friends-of-the-ochils/website
   branch: main
-  base_url: https://website-88b.pages.dev
+  base_url: https://www.friendsoftheochils.org.uk
   auth_endpoint: /api/auth
 
 
