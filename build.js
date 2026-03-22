@@ -59,7 +59,8 @@ const NAV = `<header class="site-header">
 <li><a href="/contact-us/">Contact us</a></li>
 </ul></nav>`;
 
-const HAMBURGER_SCRIPT = `<script src="/nav.js"></script>`;
+const HAMBURGER_SCRIPT = `<script src="/nav.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19d97a119ffd41938146915046a1a606"}'></script><!-- End Cloudflare Web Analytics -->`;
 
 // ── HTML page template ────────────────────────────────────────────────────────
 function articlePage({ title, dateStr, summary, bodyHtml, slug, ogImage }) {
