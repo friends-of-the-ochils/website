@@ -228,10 +228,52 @@ ${NAV}
 ${newsItems}
 </ul>
 </div>
+
+<div class="fb-section">
+  <h2 class="fb-section-heading">Also on Facebook</h2>
+  <p class="fb-section-intro">We share updates, photos and local news on our Facebook page. Click below to load the feed — this will connect to Facebook and may set cookies on your device (see our <a href="/privacy-policy/">privacy policy</a>).</p>
+  <div id="fb-placeholder" class="fb-placeholder">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="display:block;margin:0 auto 12px;">
+      <rect width="40" height="40" rx="8" fill="#1877F2"/>
+      <path d="M27 20h-4v-3c0-1.1.6-1.4 1.4-1.4H27v-4h-4.2C18.6 11.6 17 13.8 17 17v3h-3v4h3v11h5V24h3.4L27 20z" fill="#fff"/>
+    </svg>
+    <p><strong>Friends of the Ochils</strong><br/><span style="color:#666;font-size:0.9rem;">facebook.com/Friendsoftheochils</span></p>
+    <button id="fb-load-btn" class="fb-load-btn" onclick="loadFacebookFeed()">Show Facebook posts</button>
+    <p style="font-size:0.8rem;color:#888;margin-top:8px;">Or <a href="https://www.facebook.com/Friendsoftheochils" target="_blank" rel="noopener">visit our page directly on Facebook</a></p>
+  </div>
+  <div id="fb-embed" style="display:none; text-align:center;">
+    <iframe
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFriendsoftheochils&tabs=timeline&width=500&height=600&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
+      width="100%" height="600"
+      style="border:none;overflow:hidden;max-width:500px;"
+      scrolling="no" frameborder="0"
+      allowfullscreen="true"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  </div>
+</div>
+
+<style>
+.fb-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid var(--green-border); }
+.fb-section-heading { font-family: Georgia, serif; color: var(--green-primary); font-size: 1.3rem; font-weight: normal; margin-bottom: 0.5rem; }
+.fb-section-intro { color: #555; font-size: 0.95rem; margin-bottom: 1.2rem; }
+.fb-placeholder { border: 1px solid var(--green-border); border-radius: 6px; padding: 2rem 1.5rem; text-align: center; max-width: 400px; background: #f8fbf5; }
+.fb-load-btn { display: inline-block; margin-top: 1rem; padding: 10px 24px; background: #1877F2; color: #fff; border: none; border-radius: 4px; font-size: 0.95rem; cursor: pointer; font-family: Arial, sans-serif; }
+.fb-load-btn:hover { background: #1558b0; }
+</style>
+
+<script>
+function loadFacebookFeed() {
+  document.getElementById('fb-placeholder').style.display = 'none';
+  document.getElementById('fb-embed').style.display = 'block';
+}
+</script>
+
 </div>
 <footer>
-<p>Friends of the Ochils &nbsp;|&nbsp; Scottish Charity: SC022034 &nbsp;|&nbsp;
-  <a href="/contact-us/">Contact us</a></p>
+<p>&copy; 2026 Friends of the Ochils &nbsp;|&nbsp; Scottish Charity: SC022034 &nbsp;|&nbsp;
+  <a href="/contact-us/">Contact us</a> &nbsp;|&nbsp;
+  <a href="/privacy-policy/">Privacy policy</a></p>
 </footer>
 ${HAMBURGER_SCRIPT}
 </body>
