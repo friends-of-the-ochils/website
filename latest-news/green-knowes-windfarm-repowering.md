@@ -4,7 +4,7 @@ date: 2026-03-24
 summary: ScottishPower Renewables has proposed the repowering of the existing
   Green Knowes Windfarm in the Ochil Hills, replacing ageing turbines with more
   modern, efficient models.
-og_image: /wp-content/uploads/2026/03/green-knowes-repowering.jpg
+og_image: https://scontent.fman2-1.fna.fbcdn.net/v/t39.30808-6/524884547_1224234986411563_4589076156100077910_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=uZEoN02hXpMQ7kNvwH5Rxas&_nc_oc=Adra0-fLwxxaRMJhXJlZwVkrVZrgc9E3coJZmI5R2r3IV0N7UfdbNGsjAxSYfjy7Iak&_nc_zt=23&_nc_ht=scontent.fman2-1.fna&_nc_gid=AQUqRxKzSGbPllii9_5MGw&_nc_ss=7a32e&oh=00_AfzTYHiUIS1QaimiP-fD9X8tZALRjR-GpRLSklfEwxhhMg&oe=69C89741
 ---
 The Green Knowes Windfarm, located near Glendevon, Perthshire, has been a landmark in the Ochil Hills since it first became operational in 2008. The original site consists of 18 turbines with a total generating capacity of 27 Megawatts (MW), which has provided clean energy to the equivalent of approximately 15,000 households for nearly two decades.
 
