@@ -19,4 +19,4 @@ As the existing turbines approach the end of their operational lifespan, the pro
 
 **Community Benefits:** The project intends to continue and potentially increase Community Benefit Funding. To date, such funds from operational sites have supported a wide range of local initiatives, from educational programmes to habitat restoration.
 
-For more information on the development process, visit the [ScottishPower Renewables website](https://www.scottishpowerrenewables.com/) or the [Energy Consents Unit](https://www.energyconsents.scot/) for official planning documents.
+For more information on the development process, visit the [ScottishPower Renewables website](https://www.scottishpowerrenewables.com/onshore-new/onshore-scotland/wind-scotland/windfarms-in-development/green-knowes-windfarm-repowering) or the [Energy Consents Unit](https://www.energyconsents.scot/) for official planning documents.
