@@ -1,5 +1,5 @@
 ---
-title: "Green Knowes Windfarm Repowering Project Overview"
+title: "Green Knowes Windfarm Repowering Project"
 date: 2026-03-24
 summary: "ScottishPower Renewables has proposed the repowering of the existing Green Knowes Windfarm in the Ochil Hills, replacing ageing turbines with more modern, efficient models."
 og_image: /wp-content/uploads/2026/03/green-knowes-repowering.jpg
