@@ -1,22 +1,27 @@
 ---
-title: "Green Knowes Windfarm Repowering Project"
+title: Green Knowes Windfarm Repowering Project
 date: 2026-03-24
-summary: "ScottishPower Renewables has proposed the repowering of the existing Green Knowes Windfarm in the Ochil Hills, replacing ageing turbines with more modern, efficient models."
-og_image: /wp-content/uploads/2026/03/green-knowes-repowering.jpg
+summary: ScottishPower Renewables has proposed the repowering of the existing
+  Green Knowes Windfarm in the Ochil Hills, replacing ageing turbines with more
+  modern, efficient models.
+og_image: /wp-content/uploads/news/windturbines.jpg
 ---
+The following is a link to the information that Scottish Power Renewables has placed
 
-The Green Knowes Windfarm, located near Glendevon, Perthshire, has been a landmark in the Ochil Hills since it first became operational in 2008. The original site consists of 18 turbines with a total generating capacity of 27 Megawatts (MW), which has provided clean energy to the equivalent of approximately 15,000 households for nearly two decades.
+on its website ( [Green Knowes Windfarm Repowering - ScottishPower Renewables -](https://www.scottishpowerrenewables.com/onshore-new/onshore-scotland/wind-scotland/windfarms-in-development/green-knowes-windfarm-repowering)
 
-As the existing turbines approach the end of their operational lifespan, the project has moved into a repowering phase. This process involves the decommissioning and removal of the older first-generation machines to be replaced by modern wind turbine technology.
+[scottishpowerrenewables.com](https://www.scottishpowerrenewables.com/onshore-new/onshore-scotland/wind-scotland/windfarms-in-development/green-knowes-windfarm-repowering) ) and distributed to proposed consultees on the
 
-## Key Development Details
+Repowering of the existing Green Knowes Windfarm. It includes the Environmental
 
-**Modernisation:** Repowering typically allows for a significant increase in energy production — often three to ten times the original capacity — while frequently utilising a smaller total number of turbines.
+Impact Assessment (EIA) Scoping Report to which the Friends of the Ochils will be
 
-**Current Stage:** The project is listed as being in development, with ongoing baseline environmental surveys and technical studies to inform the new design.
+responding in due course. We will also respond to any subsequent planning
 
-**Landscape and Environment:** Design iterations are focused on integrating the new, larger turbines within the surrounding Ochils landscape. Environmental Impact Assessments (EIA) are required to evaluate effects on local ecology, hydrology, and visual amenity.
+application that may be submitted to the Scottish Government Energy Consents Unit
 
-**Community Benefits:** The project intends to continue and potentially increase Community Benefit Funding. To date, such funds from operational sites have supported a wide range of local initiatives, from educational programmes to habitat restoration.
+(ECU). Our initial concerns relate to the height of the proposed turbines – up to
 
-For more information on the development process, visit the [ScottishPower Renewables website](https://www.scottishpowerrenewables.com/onshore-new/onshore-scotland/wind-scotland/windfarms-in-development/green-knowes-windfarm-repowering) or the [Energy Consents Unit](https://www.energyconsents.scot/) for official planning documents.
+200m, and their cumulative impact with other Ochils windfarms, both operational and
+
+proposed.
