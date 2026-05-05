@@ -8,10 +8,6 @@
 <link rel="stylesheet" href="/styles.css"/>
 <style>
   /* ── Contact Us page-specific styles ── */
-  .committee-list h2 { font-size: 1.1rem; font-weight: bold; color: var(--green-primary); }
-  .committee-list ul { list-style: none; }
-  .committee-list ul li { padding: 3px 0; }
-  .committee-list ul li::before { content: "›› "; color: var(--green-primary); }
   form { font-family: Arial, Helvetica, sans-serif; }
   .form-section { margin-bottom: 28px; padding: 24px; border: 1px solid var(--green-border); border-radius: 4px; }
   .form-section h2 { font-size: 1.15rem; font-family: Georgia, serif; color: var(--green-primary); font-weight: normal; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--green-border); }
@@ -110,17 +106,6 @@
 
   <p class="intro">Thank you for your interest in Friends of the Ochils. Please use the form below to get in touch and someone will respond shortly.</p>
 
-  <div class="committee-list">
-    <p>For specific enquiries, please direct your message to:</p>
-    <ul>
-      <li>Stuart Dean – Wind farm enquiries</li>
-      <li>Malcolm Best – Glenquey Quarry enquiries</li>
-      <li>The Secretary – Beauly to Denny power line</li>
-      <li>David Scott – Menstrie Glen forestry and membership enquiries</li>
-    </ul>
-  </div>
-
-  <!-- Replace YOUR_CONTACT_FORM_ID with your Formspree contact form ID -->
   <form
     id="contact-form"
     action="https://formspree.io/f/maqpevad"
@@ -128,6 +113,7 @@
   >
     <input type="hidden" name="_subject" value="FotO Website Enquiry" />
     <input type="hidden" name="_next" value="https://www.friendsoftheochils.org.uk/contact-us/?thanks=1" />
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
     <section class="form-section" aria-labelledby="contact-details-heading">
       <h2 id="contact-details-heading">Your details</h2>
@@ -147,17 +133,6 @@
         <div class="field">
           <label for="phone">Phone <span style="font-weight:normal;">(optional)</span></label>
           <input type="tel" id="phone" name="phone" autocomplete="tel" />
-        </div>
-        <div class="field">
-          <label for="recipient">Enquiry for <span class="req">*</span></label>
-          <select id="recipient" name="enquiry_for" required>
-            <option value="" disabled selected>Please select…</option>
-            <option value="Stuart Dean (Wind farm enquiries)">Stuart Dean – Wind farm enquiries</option>
-            <option value="Malcolm Best (Glenquey Quarry enquiries)">Malcolm Best – Glenquey Quarry enquiries</option>
-            <option value="The Secretary (Beauly to Denny power line)">The Secretary – Beauly to Denny power line</option>
-            <option value="David Scott (Menstrie Glen forestry and membership)">David Scott – Forestry &amp; membership enquiries</option>
-            <option value="General enquiry">General enquiry</option>
-          </select>
         </div>
       </div>
     </section>

@@ -43,8 +43,6 @@
   .payment-option .pay-text { font-size: 0.93rem; line-height: 1.5; }
   .bank-details { background: var(--green-light-bg); border: 1px solid var(--green-border); border-radius: 3px; padding: 14px 18px; font-size: 0.9rem; margin-top: 14px; }
   .bank-details strong { display: block; margin-bottom: 6px; color: var(--green-primary); }
-  #cheque-amount-row { display: none; margin-top: 12px; }
-  #cheque-amount-row.visible { display: flex; }
   .check-option { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--green-border); border-radius: 3px; margin-bottom: 12px; }
   .check-option input[type="checkbox"] { accent-color: var(--green-primary); width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
   .check-option label { font-weight: normal; font-size: 0.93rem; cursor: pointer; }
@@ -175,6 +173,7 @@
     <!-- Hidden field so Formspree knows where to redirect -->
     <input type="hidden" name="_next" value="https://www.friendsoftheochils.org.uk/join-us/?thanks=1" />
     <input type="hidden" name="_subject" value="New FotO Membership Application" />
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
     <!-- ── 1. Your details ─────────────────────────────── -->
     <section class="form-section" aria-labelledby="details-heading">
@@ -293,21 +292,6 @@
             I have made a one-off payment by bank transfer for this year's subscription.
           </span>
         </label>
-        <label class="payment-option" id="cheque-option">
-          <input type="radio" name="payment_method" value="Cheque" />
-          <span class="pay-text">
-            <strong>Cheque</strong><br />
-            I am enclosing a cheque. Please make cheques payable to <em>Friends of the Ochils</em> and
-            post to: David Scott, 3 Alexander Drive, Bridge of Allan, FK9 4QB.
-          </span>
-        </label>
-      </div>
-
-      <div class="field-row" id="cheque-amount-row">
-        <div class="field narrow">
-          <label for="cheque_amount">Cheque amount (£)</label>
-          <input type="text" id="cheque_amount" name="cheque_amount" placeholder="e.g. 5.00" />
-        </div>
       </div>
     </section>
 
@@ -406,18 +390,6 @@
       } else {
         donationRow.classList.remove('visible');
         document.getElementById('donation_amount').removeAttribute('required');
-      }
-    });
-  });
-
-  // ── Show/hide cheque amount ───────────────────────────
-  document.querySelectorAll('.payment-option input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      const chequeRow = document.getElementById('cheque-amount-row');
-      if (radio.value === 'Cheque') {
-        chequeRow.classList.add('visible');
-      } else {
-        chequeRow.classList.remove('visible');
       }
     });
   });
