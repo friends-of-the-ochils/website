@@ -63,6 +63,9 @@ const HAMBURGER_SCRIPT = `<script src="/nav.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19d97a119ffd41938146915046a1a606"}'></script><!-- End Cloudflare Web Analytics -->`;
 
 // ── HTML page template ────────────────────────────────────────────────────────
+// Escape text for use inside an HTML attribute
+const escAttr = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
 function articlePage({ title, dateStr, summary, bodyHtml, slug, ogImage }) {
   const ogImg = ogImage
     ? `${BASE_URL}${ogImage}`
@@ -77,7 +80,8 @@ function articlePage({ title, dateStr, summary, bodyHtml, slug, ogImage }) {
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="/styles.css"/>
 <meta property="og:title" content="${title} – FotO"/>
-<meta property="og:description" content="${summary || ''}"/>
+<meta name="description" content="${escAttr(summary)}"/>
+<meta property="og:description" content="${escAttr(summary)}"/>
 <meta property="og:url" content="${BASE_URL}/latest-news/${slug}/"/>
 <meta property="og:site_name" content="Friends of the Ochils"/>
 <meta property="og:type" content="article"/>
@@ -211,7 +215,8 @@ const newsIndex = `<!DOCTYPE html>
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="/styles.css"/>
 <meta property="og:title" content="Latest news – Friends of the Ochils"/>
-<meta property="og:description" content="News and updates from Friends of the Ochils — covering our campaigns, planning decisions, and conservation work in and around the Ochils."/>
+<meta name="description" content="News and updates from Friends of the Ochils, covering our campaigns, planning responses and conservation work in and around the Ochils."/>
+<meta property="og:description" content="News and updates from Friends of the Ochils, covering our campaigns, planning responses and conservation work in and around the Ochils."/>
 <meta property="og:url" content="${BASE_URL}/latest-news/"/>
 <meta property="og:site_name" content="Friends of the Ochils"/>
 <meta property="og:type" content="website"/>
@@ -309,13 +314,15 @@ let sitemapContent = fs.existsSync(SITEMAP) ? fs.readFileSync(SITEMAP, 'utf8') :
 
 // Remove existing latest-news article entries (will re-add fresh)
 sitemapContent = sitemapContent.replace(
-  /\s*<url>\s*<loc>[^<]*\/latest-news\/[^<]+<\/loc>[\s\S]*?<\/url>/g, ''
+  /\s*<url>\s*<loc>[^<]*\/latest-news\/[^<]*<\/loc>[\s\S]*?<\/url>/g, ''
 );
 
 // Build news URL entries
+// Use each article's own date (falls back to today if it has none)
+const isoDate = d => (d instanceof Date && !isNaN(d) && d.getTime() > 0) ? d.toISOString().slice(0, 10) : today;
 const newsUrls = articles.map(a => `  <url>
     <loc>${BASE_URL}/latest-news/${a.slug}/</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${isoDate(a.date)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`).join('\n');
