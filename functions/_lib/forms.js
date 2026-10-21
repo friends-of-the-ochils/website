@@ -12,9 +12,10 @@
  * Bots that fail 1, 2 or 4 still get a "thank you" so they don't adapt;
  * the submission is simply dropped.
  *
- * Mail is sent by the separate "foto-mailer" Worker (workers/mailer), reached
- * through the MAILER service binding, because Pages Functions can't hold a
- * send_email binding themselves.
+ * Mail is sent by the separate "foto-mailer" Worker (workers/mailer), because
+ * Pages Functions can't hold a send_email binding. The Worker lives in the
+ * Cloudflare account that owns the domain, so we call it at MAILER_URL with
+ * the shared MAILER_KEY secret.
  */
 
 const MIN_SECONDS = 4;
@@ -73,7 +74,12 @@ export async function handleForm(context, { kind, subject, required, fields, tha
   const text = `${lines.join('\n')}\n—\nSent from the ${kind} form on friendsoftheochils.org.uk`;
 
   try {
-    await env.MAILER.sendForm({ kind, subject: subject(get), text, replyTo: email });
+    const res = await fetch(env.MAILER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Mailer-Key': env.MAILER_KEY },
+      body: JSON.stringify({ kind, subject: subject(get), text, replyTo: email }),
+    });
+    if (!res.ok) throw new Error(`Mailer returned ${res.status}`);
   } catch (err) {
     console.error('Mailer failed', err);
     return done(false, 'Sorry, something went wrong sending your message. Please try again later.');
