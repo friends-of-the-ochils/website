@@ -14,3 +14,7 @@ MAIL_FROM = "website@friendsoftheochils.org.uk"
 
 [[send_email]]
 name = "EMAIL"
+
+[observability.logs]
+enabled = true
+invocation_logs = true
