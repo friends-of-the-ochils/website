@@ -50,8 +50,6 @@
   .check-option label { font-weight: normal; font-size: 0.93rem; cursor: pointer; }
   .privacy-note { font-size: 0.82rem; color: #666; margin-top: 8px; }
   .privacy-note a { color: var(--green-primary); }
-  #success-message { display: none; background: #eef5e8; border: 2px solid var(--green-primary); border-radius: 4px; padding: 24px; text-align: center; margin-top: 24px; }
-  #success-message h3 { color: var(--green-primary); margin-bottom: 10px; }
   @media (max-width: 600px) { .field-row { flex-direction: column; } .field.narrow { flex: 1; } }
 </style>
   <meta property="og:title" content="Join Us – Friends of the Ochils"/>
@@ -163,19 +161,20 @@
   </table>
 
   <!-- ════════════════════════════════════════════════════
-       FORM
-       Replace YOUR_FORM_ID with your Formspree form ID.
-       Sign up free at https://formspree.io
+       FORM – handled by functions/api/join.js (emails the committee)
   ═══════════════════════════════════════════════════════ -->
   <form
     id="membership-form"
-    action="https://formspree.io/f/mvzwkdna"
+    action="/api/join"
     method="POST"
+    data-foto-form
   >
-    <!-- Hidden field so Formspree knows where to redirect -->
-    <input type="hidden" name="_next" value="https://www.friendsoftheochils.org.uk/join-us/?thanks=1" />
-    <input type="hidden" name="_subject" value="New FotO Membership Application" />
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+    <!-- Spam traps: people never see the "website" field; forms.js fills in the time stamp. -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="hidden" name="ts" value="" />
 
     <!-- ── 1. Your details ─────────────────────────────── -->
     <section class="form-section" aria-labelledby="details-heading">
@@ -361,9 +360,11 @@
 
     <p style="font-size:0.85rem; color:#555; margin-bottom:12px;">We will use the details you provide to administer your membership, send newsletters, and (where applicable) process Gift Aid. See our <a href="/privacy-policy/">privacy policy</a> for full details.</p>
 
+    <p class="form-error" role="alert"></p>
+
     <button type="submit" class="submit-btn">Submit membership application</button>
 
-    <div id="success-message" aria-live="polite">
+    <div id="success-message" class="form-success" aria-live="polite">
       <h3>Thank you for your application!</h3>
       <p>We have received your membership form and will be in touch shortly to confirm everything. Welcome to Friends of the Ochils!</p>
     </div>
@@ -402,20 +403,9 @@
     dateInput.valueAsDate = new Date();
   }
 
-  // ── Formspree AJAX submission (optional enhancement) ──
-  const form = document.getElementById('membership-form');
-  form.addEventListener('submit', async (e) => {
-    const action = form.getAttribute('action');
-    // Only intercept if Formspree ID has been set
-    if (action.includes('YOUR_FORM_ID')) {
-      e.preventDefault();
-      alert('⚠ Please configure your Formspree form ID before going live. See the migration guide.');
-      return;
-    }
-    // Let the form submit normally to Formspree
-    // Formspree will redirect to _next on success
-  });
 </script>
+<script src="/nav.js"></script>
+<script src="/forms.js"></script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19d97a119ffd41938146915046a1a606"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

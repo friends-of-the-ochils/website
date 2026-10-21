@@ -1,0 +1,14 @@
+# Deploy once with:  npx wrangler deploy   (run inside workers/mailer)
+# Then set CONTACT_TO / JOIN_TO / FORWARD_TO / MAIL_TO in the dashboard (Settings → Variables),
+# and add a service binding MAILER → foto-mailer on the Pages project.
+name = "foto-mailer"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+keep_vars = true
+
+[vars]
+MAIL_FROM = "website@friendsoftheochils.org.uk"
+
+[[send_email]]
+name = "EMAIL"

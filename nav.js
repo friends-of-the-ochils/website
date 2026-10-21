@@ -1,3 +1,12 @@
+/* ── Email links hidden from spam harvesters ──
+   Write an address as <a data-email="ku.gro.slihcoehtfosdneirf@ofni"></a>
+   (the address backwards). The real address only appears once the page runs. */
+document.querySelectorAll('a[data-email]').forEach(function (a) {
+  var addr = a.getAttribute('data-email').split('').reverse().join('');
+  a.href = 'mailto:' + addr;
+  if (!a.textContent.trim() || a.hasAttribute('data-email-text')) a.textContent = addr;
+});
+
 (function () {
   /* ── Hamburger toggle ── */
   var btn  = document.querySelector('.hamburger');
