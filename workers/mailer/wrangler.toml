@@ -1,0 +1,20 @@
+# Deploy into the "FotO Website" Cloudflare account (the one with the domain):
+#   npx wrangler deploy                 (run inside workers/mailer)
+#   npx wrangler secret put MAILER_KEY
+# Then set CONTACT_TO / JOIN_TO / FORWARD_TO / MAIL_TO in the dashboard (Settings → Variables).
+# See README.md for the Pages project side.
+name = "foto-mailer"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+keep_vars = true
+
+[vars]
+MAIL_FROM = "website@friendsoftheochils.org.uk"
+
+[[send_email]]
+name = "EMAIL"
+
+[observability.logs]
+enabled = true
+invocation_logs = true

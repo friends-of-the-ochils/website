@@ -106,16 +106,20 @@
 
   <h1>Contact us</h1>
 
-  <p class="intro">Thank you for your interest in Friends of the Ochils. Please use the form below to get in touch and someone will respond shortly.</p>
+  <p class="intro">Thank you for your interest in Friends of the Ochils. Please use the form below to get in touch and someone will respond shortly, or email us at <a data-email="ku.gro.slihcoehtfosdneirf@ofni" data-email-text>our email address</a>.</p>
 
   <form
     id="contact-form"
-    action="https://formspree.io/f/maqpevad"
+    action="/api/contact"
     method="POST"
+    data-foto-form
   >
-    <input type="hidden" name="_subject" value="FotO Website Enquiry" />
-    <input type="hidden" name="_next" value="https://www.friendsoftheochils.org.uk/contact-us/?thanks=1" />
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+    <!-- Spam traps: people never see the "website" field; forms.js fills in the time stamp. -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="hidden" name="ts" value="" />
 
     <section class="form-section" aria-labelledby="contact-details-heading">
       <h2 id="contact-details-heading">Your details</h2>
@@ -151,7 +155,16 @@
 
     <p style="font-size:0.85rem; color:#555; margin-top:8px;">Your details will be used only to respond to your enquiry. See our <a href="/privacy-policy/">privacy policy</a>.</p>
 
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFfr4dI_BVo5Akls"></div>
+
+    <p class="form-error" role="alert"></p>
+
     <button type="submit" class="submit-btn">Send message</button>
+
+    <div class="form-success" aria-live="polite">
+      <h3>Thank you for getting in touch!</h3>
+      <p>We have received your message and someone will reply shortly.</p>
+    </div>
 
   </form>
 </div>
@@ -161,16 +174,9 @@
   <a href="/privacy-policy/">Privacy policy</a></p>
 </footer>
 
-<script>
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (e) => {
-    const action = form.getAttribute('action');
-    if (action.includes('YOUR_CONTACT_FORM_ID')) {
-      e.preventDefault();
-      alert('⚠ Please configure your Formspree contact form ID before going live.');
-    }
-  });
-</script>
+<script src="/nav.js"></script>
+<script src="/forms.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19d97a119ffd41938146915046a1a606"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
