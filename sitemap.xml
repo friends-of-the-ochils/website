@@ -49,24 +49,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.friendsoftheochils.org.uk/latest-news/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.friendsoftheochils.org.uk/latest-news/scotlands-rural-landmarket-and-natural-capital/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.friendsoftheochils.org.uk/latest-news/timber-harvesting-dollar-forest-may-2021/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.friendsoftheochils.org.uk/our-work/forestry/</loc>
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -77,18 +59,6 @@
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.friendsoftheochils.org.uk/our-work/newsletters/annual-reviews-and-financial-reports/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.friendsoftheochils.org.uk/our-work/newsletters/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.friendsoftheochils.org.uk/our-work/other-planning-issues/glenquey-quarry/</loc>
@@ -147,6 +117,126 @@
   <url>
     <loc>https://www.friendsoftheochils.org.uk/the-ochils/useful-links/</loc>
     <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/brunt-hill-and-green-knowes-responses/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/green-knowes-windfarm-repowering/</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/confor-consultation-response/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/balquhandy-forest-ltfp-consultation/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/craighead-windfarm-decision/</loc>
+    <lastmod>2025-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/brunt-hill-windfarm-objection/</loc>
+    <lastmod>2025-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/glenfarg-woodland-consultation/</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/windburn-windfarm/</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/blackford-farms-woodland-consultation/</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/ardargie-woodland-proposal/</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/scotlands-rural-landmarket-and-natural-capital/</loc>
+    <lastmod>2022-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/timber-harvesting-dollar-forest-may-2021/</loc>
+    <lastmod>2021-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/saving-scotlands-red-squirrels/</loc>
+    <lastmod>2019-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/latest-news/light-on-dumyat-by-rennie-mcowan-republished/</loc>
+    <lastmod>2016-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/history/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/history/newsletters/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/history/annual-reports/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/history/documents/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.friendsoftheochils.org.uk/history/help/</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

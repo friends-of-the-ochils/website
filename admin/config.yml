@@ -23,3 +23,62 @@ collections:
       - { label: "Summary",       name: "summary",     widget: "string",   hint: "One-sentence summary shown on the news listing page" }
       - { label: "Body",          name: "body",        widget: "markdown" }
       - { label: "Facebook share image", name: "og_image", widget: "image", required: false, hint: "Optional image shown when shared on Facebook" }
+
+  - name: "archive"
+    label: "History archive"
+    label_singular: "Archive item"
+    description: "Old newsletters, annual reports, campaign papers, cuttings and photos. Each entry appears automatically on the History pages."
+    folder: "history/archive"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{year}} · {{title}}"
+    sortable_fields: ["year", "title", "category"]
+    view_filters:
+      - { label: "Newsletters",       field: category, pattern: "newsletter" }
+      - { label: "Annual reports",    field: category, pattern: "annual-report" }
+      - { label: "Campaign papers",   field: category, pattern: "campaign" }
+      - { label: "Press cuttings",    field: category, pattern: "cutting" }
+      - { label: "Photos",            field: category, pattern: "photo" }
+    media_folder: "/wp-content/uploads/archive"
+    public_folder: "/wp-content/uploads/archive"
+    fields:
+      - { label: "Title",    name: "title",    widget: "string", hint: "e.g. Spring Newsletter 1998" }
+      - label: "Type"
+        name: "category"
+        widget: "select"
+        default: "newsletter"
+        options:
+          - { label: "Newsletter",                value: "newsletter" }
+          - { label: "Annual review / report",    value: "annual-report" }
+          - { label: "Campaign paper or response", value: "campaign" }
+          - { label: "Report or survey",          value: "report" }
+          - { label: "Press cutting",             value: "cutting" }
+          - { label: "Letter or correspondence",  value: "letter" }
+          - { label: "Photo",                     value: "photo" }
+          - { label: "Tribute or obituary",       value: "tribute" }
+          - { label: "Other",                     value: "other" }
+      - { label: "Year",     name: "year",     widget: "number", value_type: "int", min: 1990, max: 2100, hint: "Year it was published or taken. A best guess is fine." }
+      - label: "Month or season"
+        name: "period"
+        widget: "select"
+        required: false
+        hint: "Optional. Leave blank if you only know the year."
+        options: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Spring", "Summer", "Autumn", "Winter"]
+      - { label: "Issue number", name: "issue", widget: "number", value_type: "int", required: false, hint: "Newsletters only, if it has one" }
+      - { label: "Document (PDF)", name: "file", widget: "file", required: false, hint: "The scanned PDF. Try to keep it under 10 MB." }
+      - { label: "Picture",  name: "image",    widget: "image", required: false, hint: "Optional: a photo, or a picture of the front cover" }
+      - { label: "Topic",    name: "topic",    widget: "string", required: false, hint: "Groups papers on the Documents page, e.g. Glenquey Quarry, Beauly–Denny power line, Windfarms" }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "A sentence or two on what's in it" }
+      - { label: "Source",   name: "source",   widget: "string", required: false, hint: "Optional, e.g. 'Paper copy lent by Jean Smith'" }
+
+  - name: "history_pages"
+    label: "History pages"
+    files:
+      - label: "History section text"
+        name: "history_text"
+        file: "history/history.md"
+        fields:
+          - { label: "Introduction",    name: "intro",         widget: "markdown", hint: "Shown at the top of the History page" }
+          - { label: "Can you help? appeal", name: "appeal",   widget: "markdown", hint: "What's missing from the archive. Update this as gaps are filled." }
+          - { label: "Scanning tips",   name: "scanning_tips", widget: "markdown" }

@@ -449,3 +449,27 @@ footer a { color: var(--green-dark); }
   .site-header .logo img { height: 55px; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ── History archive ── */
+.archive-list { list-style: none; margin: 0 0 24px; padding: 0; }
+.page-content .archive-list { margin-left: 0; }
+.archive-item {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--green-mid-border);
+}
+.archive-item h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.archive-body { flex: 1; min-width: 0; }
+.archive-body p { margin: 0 0 6px; }
+.archive-meta, .archive-source { font-family: Arial, sans-serif; font-size: 0.85rem; color: var(--text-mid); }
+.archive-source { font-style: italic; }
+.archive-thumb img { width: 90px; height: auto; border: 1px solid var(--green-border); }
+.history-appeal {
+  margin-top: 32px;
+  padding: 18px 22px;
+  background: var(--green-light-bg);
+  border-left: 4px solid var(--green-primary);
+  border-radius: 3px;
+}
+.page-content .history-appeal h2 { margin-top: 0; }

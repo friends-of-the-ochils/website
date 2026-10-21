@@ -38,9 +38,6 @@ const NAV = `<header class="site-header">
   </ul></li>
   <li><a href="/our-work/windfarms/">Windfarms</a></li>
   <li><a href="/our-work/powerline/">Beauly to Denny Power Line</a></li>
-  <li class="has-children"><a href="/our-work/newsletters/">Newsletters</a><ul>
-    <li><a href="/our-work/newsletters/annual-reviews-and-financial-reports/">Annual Reviews &amp; Financial Reports</a></li>
-  </ul></li>
 </ul></li>
 <li><a class="active" href="/latest-news/">Latest news</a></li>
 <li class="has-children"><a href="/about-us/">About us</a><ul>
@@ -53,6 +50,12 @@ const NAV = `<header class="site-header">
   <li><a href="/the-ochils/list-of-hills-and-maps/">List of hills &amp; maps</a></li>
   <li><a href="/the-ochils/books/">Books about the Ochils</a></li>
   <li><a href="/the-ochils/useful-links/">Useful links</a></li>
+</ul></li>
+<li class="has-children"><a href="/history/">History</a><ul>
+  <li><a href="/history/newsletters/">Newsletters</a></li>
+  <li><a href="/history/annual-reports/">Annual reports</a></li>
+  <li><a href="/history/documents/">Documents &amp; campaigns</a></li>
+  <li><a href="/history/help/">Help us fill the gaps</a></li>
 </ul></li>
 <li><a href="/gallery/">Gallery</a></li>
 <li><a href="/join-us/">Join us</a></li>
@@ -306,6 +309,9 @@ if (fs.existsSync(HOMEPAGE) && articles.length > 0) {
   console.log(`  ✓ Updated homepage recent posts (${recent.map(a => a.slug).join(', ')})`);
 }
 
+// ── Build the History section ─────────────────────────────────────────────────
+const historyPages = require('./build-history')({ NAV, HAMBURGER_SCRIPT, BASE_URL });
+
 // ── Update sitemap.xml ────────────────────────────────────────────────────────
 const today = new Date().toISOString().slice(0, 10);
 
@@ -315,6 +321,11 @@ let sitemapContent = fs.existsSync(SITEMAP) ? fs.readFileSync(SITEMAP, 'utf8') :
 // Remove existing latest-news article entries (will re-add fresh)
 sitemapContent = sitemapContent.replace(
   /\s*<url>\s*<loc>[^<]*\/latest-news\/[^<]*<\/loc>[\s\S]*?<\/url>/g, ''
+);
+
+// Remove history entries (and the old newsletter pages they replaced)
+sitemapContent = sitemapContent.replace(
+  /\s*<url>\s*<loc>[^<]*\/(history|our-work\/newsletters)\/[^<]*<\/loc>[\s\S]*?<\/url>/g, ''
 );
 
 // Build news URL entries
@@ -335,9 +346,16 @@ const newsIndexUrl = `  <url>
     <priority>0.8</priority>
   </url>`;
 
+const historyUrls = historyPages.map(slug => `  <url>
+    <loc>${BASE_URL}/history/${slug ? slug + '/' : ''}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>`).join('\n');
+
 sitemapContent = sitemapContent.replace(
   '</urlset>',
-  `${newsIndexUrl}\n${newsUrls}\n</urlset>`
+  `${newsIndexUrl}\n${newsUrls}\n${historyUrls}\n</urlset>`
 );
 
 fs.writeFileSync(SITEMAP, sitemapContent, 'utf8');
