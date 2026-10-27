@@ -449,4 +449,3 @@ footer a { color: var(--green-dark); }
   .site-header .logo img { height: 55px; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
-
